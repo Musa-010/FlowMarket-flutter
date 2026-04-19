@@ -224,22 +224,20 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               // Sort By
               Text('Sort By', style: AppTypography.labelMedium),
               const SizedBox(height: AppSpacing.sm),
-              RadioGroup<String>(
-                groupValue: _sort,
-                onChanged: (value) {
-                  if (value != null) setState(() => _sort = value);
-                },
-                child: Column(
-                  children: _sortOptions.map((option) {
-                    return RadioListTile<String>(
-                      value: option.$1,
-                      title: Text(option.$2, style: AppTypography.bodyMedium),
-                      activeColor: AppColors.primary,
-                      dense: true,
-                      contentPadding: EdgeInsets.zero,
-                    );
-                  }).toList(),
-                ),
+              Column(
+                children: _sortOptions.map((option) {
+                  return RadioListTile<String>(
+                    value: option.$1,
+                    groupValue: _sort,
+                    onChanged: (value) {
+                      if (value != null) setState(() => _sort = value);
+                    },
+                    title: Text(option.$2, style: AppTypography.bodyMedium),
+                    activeColor: AppColors.primary,
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                  );
+                }).toList(),
               ),
               const SizedBox(height: AppSpacing.xxl),
 

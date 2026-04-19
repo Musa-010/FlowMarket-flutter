@@ -180,7 +180,7 @@ class _UploadWorkflowScreenState extends ConsumerState<UploadWorkflowScreen> {
                 .copyWith(color: AppColors.textSecondary)),
         const SizedBox(height: 6),
         DropdownButtonFormField<WorkflowCategory>(
-          initialValue: _selectedCategory,
+          value: _selectedCategory,
           decoration: const InputDecoration(hintText: 'Select a category'),
           items: WorkflowCategory.values
               .map((c) => DropdownMenuItem(
@@ -339,7 +339,7 @@ class _UploadWorkflowScreenState extends ConsumerState<UploadWorkflowScreen> {
                 .copyWith(color: AppColors.textSecondary)),
         const SizedBox(height: 6),
         DropdownButtonFormField<String>(
-          initialValue: _setupTime,
+          value: _setupTime,
           decoration: const InputDecoration(hintText: 'Select setup time'),
           items: _setupTimes
               .map((t) => DropdownMenuItem(value: t, child: Text(t)))
