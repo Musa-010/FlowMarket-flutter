@@ -1,0 +1,124 @@
+name: flowmarket_app
+description: "FlowMarket — App Store for Business Automations"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Navigation
+  go_router: ^13.2.4
+
+  # HTTP Client
+  dio: ^5.4.3+1
+  retrofit: '>=4.4.1 <4.5.0'
+  json_annotation: ^4.9.0
+  freezed_annotation: ^2.4.1
+
+  # Local Storage
+  hive_flutter: ^1.1.0
+
+  # Secure Storage
+  flutter_secure_storage: ^9.2.2
+
+  # Payments
+  flutter_stripe: ^10.2.0
+
+  # In-App Purchase
+  in_app_purchase: ^3.2.0
+
+  # Image Cache
+  cached_network_image: ^3.3.1
+
+  # Markdown
+  flutter_markdown: ^0.7.3
+
+  # Charts
+  fl_chart: ^0.68.0
+
+  # Animations
+  lottie: ^3.1.2
+
+  # Firebase
+  firebase_core: ^2.31.0
+  firebase_messaging: ^14.9.2
+
+  # File & Image Pickers
+  file_picker: ^8.0.3
+  image_picker: ^1.1.1
+
+  # URL & Sharing
+  url_launcher: ^6.2.6
+  share_plus: ^9.0.0
+
+  # Connectivity
+  connectivity_plus: ^6.0.3
+
+  # UI Helpers
+  shimmer: ^3.0.0
+  toastification: ^2.0.0
+  modal_bottom_sheet: ^3.0.0
+  photo_view: ^0.15.0
+  flutter_svg: ^2.0.10+1
+
+  # Web View
+  webview_flutter: ^4.7.0
+
+  # Form Validation
+  reactive_forms: ^17.0.1
+
+  # Internationalization
+  intl: ^0.20.2
+
+  # Environment
+  flutter_dotenv: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # Code Generation
+  build_runner: ^2.4.9
+  riverpod_generator: ^2.4.0
+  retrofit_generator: '>=9.1.2 <9.2.0'
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+
+  # Splash & Icons
+  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/animations/
+    - assets/icons/
+    - .env
+    - .env.development
+    - .env.production
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
