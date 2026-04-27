@@ -60,6 +60,7 @@ dependencies:
   # URL & Sharing
   url_launcher: ^6.2.6
   share_plus: ^9.0.0
+  app_links: ^6.3.2
 
   # Connectivity
   connectivity_plus: ^6.0.3

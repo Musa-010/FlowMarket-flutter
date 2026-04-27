@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_radius.dart';
@@ -26,18 +26,41 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
     try {
       final result = await ref
           .read(purchaseRepositoryProvider)
-          .createSubscriptionCheckout(planId);
+          .createSubscriptionIntent(planId);
 
-      final checkoutUrl = result['checkoutUrl'] as String?;
-      if (checkoutUrl == null || checkoutUrl.isEmpty) {
-        throw Exception('No checkout URL received');
+      final clientSecret = result['clientSecret'] as String?;
+      final ephemeralKey = result['ephemeralKey'] as String?;
+      final customerId = result['customerId'] as String?;
+
+      if (clientSecret == null || ephemeralKey == null || customerId == null) {
+        throw Exception('Invalid payment session received from server');
       }
 
-      final uri = Uri.parse(checkoutUrl);
-      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-        throw Exception('Could not open payment page');
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          setupIntentClientSecret: clientSecret,
+          customerEphemeralKeySecret: ephemeralKey,
+          customerId: customerId,
+          merchantDisplayName: 'FlowMarket',
+          style: ThemeMode.light,
+        ),
+      );
+
+      await Stripe.instance.presentPaymentSheet();
+
+      // Card saved — now create subscription
+      await ref
+          .read(purchaseRepositoryProvider)
+          .subscribeAfterSetup(planId);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Subscription activated!')),
+        );
+        context.pop();
       }
     } on StripeException catch (e) {
+      if (e.error.code == FailureCode.Canceled) return;
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(e.error.localizedMessage ?? 'Payment failed')),

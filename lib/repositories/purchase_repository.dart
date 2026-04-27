@@ -104,4 +104,32 @@ class PurchaseRepository {
             );
     }
   }
+
+  Future<Map<String, dynamic>> createSubscriptionIntent(String planId) async {
+    try {
+      final response = await _dio.post(
+        '/checkout/subscription-intent',
+        data: {'planId': planId},
+      );
+      final data = response.data;
+      return data is Map<String, dynamic> ? data : <String, dynamic>{};
+    } on DioException catch (e) {
+      throw e.error is ApiException
+          ? e.error as ApiException
+          : const ApiException(message: 'Failed to create subscription intent');
+    }
+  }
+
+  Future<void> subscribeAfterSetup(String planId) async {
+    try {
+      await _dio.post(
+        '/checkout/subscribe-after-setup',
+        data: {'planId': planId},
+      );
+    } on DioException catch (e) {
+      throw e.error is ApiException
+          ? e.error as ApiException
+          : const ApiException(message: 'Failed to activate subscription');
+    }
+  }
 }

@@ -40,21 +40,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/splash',
     redirect: (context, state) {
-      final isLoggedIn = authState.value != null;
       final location = state.matchedLocation;
+      final isSplash = location == '/splash';
+
+      // Auth still loading — stay on splash
+      if (authState.isLoading) return isSplash ? null : '/splash';
+
+      final isLoggedIn = authState.value != null;
       final isAuthRoute = location.startsWith('/login') ||
           location.startsWith('/register') ||
           location.startsWith('/onboarding') ||
           location.startsWith('/forgot-password');
-      final isSplash = location == '/splash';
 
-      // Don't redirect while on splash (splash handles its own navigation)
-      if (isSplash) return null;
+      // Auth just finished — redirect from splash
+      if (isSplash) return isLoggedIn ? '/dashboard' : '/login';
 
-      // Not logged in and trying to access protected route
       if (!isLoggedIn && !isAuthRoute) return '/login';
-
-      // Logged in but on auth route
       if (isLoggedIn && isAuthRoute) return '/dashboard';
 
       return null;
