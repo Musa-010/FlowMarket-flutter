@@ -500,7 +500,9 @@ class _GlassMenuItemSwitch extends StatelessWidget {
                 value: value,
                 onChanged: onChanged,
                 activeTrackColor: const Color(0xFF8B5CF6),
-                activeThumbColor: const Color(0xFFCEBDFF),
+                thumbColor: WidgetStateProperty.resolveWith(
+                  (s) => s.contains(WidgetState.selected) ? const Color(0xFFCEBDFF) : null,
+                ),
               ),
             ],
           ),

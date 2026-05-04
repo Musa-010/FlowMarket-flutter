@@ -302,13 +302,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                   value: _wantToSell,
                                   onChanged: (v) =>
                                       setState(() => _wantToSell = v),
-                                  activeThumbColor: const Color(0xFF8B5CF6),
-                                  activeTrackColor: const Color(0xFF8B5CF6)
-                                      .withValues(alpha: 0.3),
-                                  inactiveTrackColor: Colors.white
-                                      .withValues(alpha: 0.1),
-                                  inactiveThumbColor:
-                                      const Color(0xFF948E9D),
+                                  thumbColor: WidgetStateProperty.resolveWith(
+                                    (s) => s.contains(WidgetState.selected)
+                                        ? const Color(0xFF8B5CF6)
+                                        : const Color(0xFF948E9D),
+                                  ),
+                                  trackColor: WidgetStateProperty.resolveWith(
+                                    (s) => s.contains(WidgetState.selected)
+                                        ? const Color(0xFF8B5CF6).withValues(alpha: 0.3)
+                                        : Colors.white.withValues(alpha: 0.1),
+                                  ),
                                 ),
                                 const SizedBox(width: AppSpacing.sm),
                                 Expanded(
