@@ -1,14 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_radius.dart';
-import '../../../core/constants/app_typography.dart';
 import '../../../models/workflow/workflow_model.dart';
-import '../../../shared/widgets/app_button.dart';
-import '../../../shared/widgets/app_text_field.dart';
+import '../../../shared/widgets/glass_widgets.dart';
 import '../../marketplace/widgets/category_chip.dart';
-import '../widgets/upload_step_indicator.dart';
 
 class UploadWorkflowScreen extends ConsumerStatefulWidget {
   const UploadWorkflowScreen({super.key});
@@ -21,21 +19,16 @@ class UploadWorkflowScreen extends ConsumerStatefulWidget {
 class _UploadWorkflowScreenState extends ConsumerState<UploadWorkflowScreen> {
   int _currentStep = 0;
 
-  // Step 0 controllers
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final _oneTimePriceController = TextEditingController(text: '0.00');
+  final _demoVideoController = TextEditingController();
+  final _tagsController = TextEditingController();
+
   WorkflowCategory? _selectedCategory;
   WorkflowPlatform _selectedPlatform = WorkflowPlatform.n8n;
   WorkflowDifficulty _selectedDifficulty = WorkflowDifficulty.beginner;
-  final _tagsController = TextEditingController();
-
-  // Step 1
-  final _demoVideoController = TextEditingController();
   bool _jsonUploaded = false;
-
-  // Step 2
-  final _oneTimePriceController = TextEditingController();
-  final _monthlyPriceController = TextEditingController();
   String? _setupTime;
   final Set<String> _selectedIntegrations = {};
   final List<TextEditingController> _stepControllers = [
@@ -57,22 +50,18 @@ class _UploadWorkflowScreenState extends ConsumerState<UploadWorkflowScreen> {
     'Discord',
   ];
 
-  static const _setupTimes = [
-    '5 minutes',
-    '15 minutes',
-    '30 minutes',
-    '1 hour',
-    '2+ hours',
-  ];
+  double get _platformFee {
+    final price = double.tryParse(_oneTimePriceController.text) ?? 0;
+    return price * 0.05;
+  }
 
   @override
   void dispose() {
     _titleController.dispose();
     _descriptionController.dispose();
-    _tagsController.dispose();
-    _demoVideoController.dispose();
     _oneTimePriceController.dispose();
-    _monthlyPriceController.dispose();
+    _demoVideoController.dispose();
+    _tagsController.dispose();
     for (final c in _stepControllers) {
       c.dispose();
     }
@@ -80,422 +69,531 @@ class _UploadWorkflowScreenState extends ConsumerState<UploadWorkflowScreen> {
   }
 
   void _next() {
-    if (_currentStep < 3) {
-      setState(() => _currentStep++);
-    }
+    if (_currentStep < 3) setState(() => _currentStep++);
   }
 
   void _back() {
-    if (_currentStep > 0) {
-      setState(() => _currentStep--);
-    }
+    if (_currentStep > 0) setState(() => _currentStep--);
   }
 
   void _submit() {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Workflow submitted for review!')),
+      SnackBar(
+        content: const Text('Workflow submitted for review!'),
+        backgroundColor: const Color(0xFF4DDCC6).withValues(alpha: 0.9),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
     );
-    Navigator.of(context).pop();
+    context.pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Upload Workflow')),
-      body: Column(
-        children: [
-          UploadStepIndicator(
-            currentStep: _currentStep,
-            totalSteps: 4,
-            stepLabels: const ['Info', 'Media', 'Pricing', 'Review'],
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: _buildStepContent(),
-            ),
-          ),
-          // Bottom buttons
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-              border: Border(top: BorderSide(color: AppColors.border)),
-            ),
-            child: Row(
-              children: [
-                if (_currentStep > 0)
-                  Expanded(
-                    child: AppButton(
-                      label: 'Back',
-                      variant: AppButtonVariant.outlined,
-                      onPressed: _back,
+      backgroundColor: const Color(0xFF101415),
+      body: GlassBg(
+        child: Column(
+          children: [
+            // Glass header
+            SafeArea(
+              bottom: false,
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.06),
+                      border: Border(
+                        bottom: BorderSide(
+                            color: Colors.white.withValues(alpha: 0.1)),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.bubble_chart_outlined,
+                            color: Color(0xFFCEBDFF), size: 20),
+                        const SizedBox(width: 8),
+                        GradientText(
+                          'FlowMarket',
+                          style: const TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: -0.5,
+                          ),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () => context.pop(),
+                          child: Icon(
+                            Icons.close,
+                            color: Colors.white.withValues(alpha: 0.6),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                if (_currentStep > 0) const SizedBox(width: 12),
-                Expanded(
-                  child: AppButton(
-                    label: _currentStep == 3 ? 'Submit' : 'Next',
-                    onPressed: _currentStep == 3 ? _submit : _next,
+                ),
+              ),
+            ),
+
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'List New Workflow',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 28,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                        letterSpacing: -0.5,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Share your automated masterpiece with the world. Set your price and watch your efficiency grow others.',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 13,
+                        color: Colors.white.withValues(alpha: 0.5),
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Cover image upload
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: double.infinity,
+                        height: 180,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.04),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.15),
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 52,
+                              height: 52,
+                              decoration: BoxDecoration(
+                                color: Colors.white.withValues(alpha: 0.08),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.cloud_upload_outlined,
+                                color: Colors.white.withValues(alpha: 0.5),
+                                size: 24,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Cover Image',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white.withValues(alpha: 0.6),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Recommended 1600x1200px',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 11,
+                                color: Colors.white.withValues(alpha: 0.3),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Pricing section
+                    _GlassSection(
+                      label: 'PRICING (USD)',
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _PriceInput(controller: _oneTimePriceController),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Platform Fee (5%)',
+                                style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 11,
+                                  color: Colors.white.withValues(alpha: 0.4),
+                                ),
+                              ),
+                              Text(
+                                '-\$${_platformFee.toStringAsFixed(2)}',
+                                style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 11,
+                                  color: Colors.white.withValues(alpha: 0.4),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+
+                    // Title section
+                    _GlassSection(
+                      label: 'WORKFLOW TITLE',
+                      child: _GlassTextField(
+                        controller: _titleController,
+                        hint: 'e.g., Ethereal Social Automator',
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+
+                    // Category section
+                    _GlassSection(
+                      label: 'CATEGORY',
+                      child: Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: WorkflowCategory.values.map((cat) {
+                          final color = CategoryChip.colorFor(cat);
+                          final label = CategoryChip.labelFor(cat);
+                          final selected = _selectedCategory == cat;
+                          return GestureDetector(
+                            onTap: () =>
+                                setState(() => _selectedCategory = cat),
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 150),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 14, vertical: 8),
+                              decoration: BoxDecoration(
+                                color: selected
+                                    ? color.withValues(alpha: 0.2)
+                                    : Colors.white.withValues(alpha: 0.05),
+                                borderRadius: BorderRadius.circular(999),
+                                border: Border.all(
+                                  color: selected
+                                      ? color.withValues(alpha: 0.5)
+                                      : Colors.white.withValues(alpha: 0.1),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(CategoryChip.iconFor(cat),
+                                      size: 13, color: color),
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    label,
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: selected
+                                          ? color
+                                          : Colors.white
+                                              .withValues(alpha: 0.6),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+
+                    // Description section
+                    _GlassSection(
+                      label: 'DESCRIPTION',
+                      child: _GlassTextField(
+                        controller: _descriptionController,
+                        hint: 'Explain how this workflow changes the game...',
+                        maxLines: 5,
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+
+                    // Workflow file section
+                    GestureDetector(
+                      onTap: () => setState(() => _jsonUploaded = true),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: BackdropFilter(
+                          filter:
+                              ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                          child: Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.05),
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(
+                                  color: Colors.white.withValues(alpha: 0.08)),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 42,
+                                  height: 42,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF8B5CF6)
+                                        .withValues(alpha: 0.15),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Icon(
+                                    _jsonUploaded
+                                        ? Icons.check_circle_outline
+                                        : Icons.folder_outlined,
+                                    color: _jsonUploaded
+                                        ? const Color(0xFF4DDCC6)
+                                        : const Color(0xFFCEBDFF),
+                                    size: 20,
+                                  ),
+                                ),
+                                const SizedBox(width: 14),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Workflow File',
+                                        style: const TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        _jsonUploaded
+                                            ? 'workflow.json uploaded'
+                                            : 'Drag .json or .flow files here',
+                                        style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 11,
+                                          color: Colors.white
+                                              .withValues(alpha: 0.4),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Icon(
+                                  _jsonUploaded
+                                      ? Icons.check_circle_rounded
+                                      : Icons.add_circle_outline,
+                                  color: _jsonUploaded
+                                      ? const Color(0xFF4DDCC6)
+                                      : Colors.white.withValues(alpha: 0.4),
+                                  size: 22,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Publish button
+            SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+                child: GestureDetector(
+                  onTap: _submit,
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF8B5CF6), Color(0xFFD946EF)],
+                      ),
+                      borderRadius: BorderRadius.circular(999),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFF8B5CF6).withValues(alpha: 0.4),
+                          blurRadius: 24,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Publish Workflow',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 17,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                          letterSpacing: -0.2,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    );
-  }
-
-  Widget _buildStepContent() {
-    return switch (_currentStep) {
-      0 => _buildBasicInfo(),
-      1 => _buildMedia(),
-      2 => _buildPricing(),
-      3 => _buildReview(),
-      _ => const SizedBox.shrink(),
-    };
-  }
-
-  // --- Step 0: Basic Info ---
-  Widget _buildBasicInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppTextField(
-          controller: _titleController,
-          label: 'Title',
-          hint: 'e.g. Automated Lead Nurture Sequence',
-        ),
-        const SizedBox(height: 16),
-        AppTextField(
-          controller: _descriptionController,
-          label: 'Short Description',
-          hint: 'Describe what this workflow does',
-          maxLines: 3,
-          maxLength: 160,
-        ),
-        const SizedBox(height: 16),
-        Text('Category',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        DropdownButtonFormField<WorkflowCategory>(
-          value: _selectedCategory,
-          decoration: const InputDecoration(hintText: 'Select a category'),
-          items: WorkflowCategory.values
-              .map((c) => DropdownMenuItem(
-                    value: c,
-                    child: Text(CategoryChip.labelFor(c)),
-                  ))
-              .toList(),
-          onChanged: (v) => setState(() => _selectedCategory = v),
-        ),
-        const SizedBox(height: 16),
-        Text('Platform',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        SegmentedButton<WorkflowPlatform>(
-          segments: const [
-            ButtonSegment(value: WorkflowPlatform.n8n, label: Text('n8n')),
-            ButtonSegment(value: WorkflowPlatform.make, label: Text('Make')),
-            ButtonSegment(value: WorkflowPlatform.both, label: Text('Both')),
-          ],
-          selected: {_selectedPlatform},
-          onSelectionChanged: (v) =>
-              setState(() => _selectedPlatform = v.first),
-        ),
-        const SizedBox(height: 16),
-        Text('Difficulty',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        SegmentedButton<WorkflowDifficulty>(
-          segments: const [
-            ButtonSegment(
-                value: WorkflowDifficulty.beginner, label: Text('Beginner')),
-            ButtonSegment(
-                value: WorkflowDifficulty.intermediate,
-                label: Text('Intermediate')),
-            ButtonSegment(
-                value: WorkflowDifficulty.advanced, label: Text('Advanced')),
-          ],
-          selected: {_selectedDifficulty},
-          onSelectionChanged: (v) =>
-              setState(() => _selectedDifficulty = v.first),
-        ),
-        const SizedBox(height: 16),
-        AppTextField(
-          controller: _tagsController,
-          label: 'Tags',
-          hint: 'Comma-separated tags',
-        ),
-      ],
-    );
-  }
-
-  // --- Step 1: Media ---
-  Widget _buildMedia() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Workflow File',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        OutlinedButton.icon(
-          onPressed: () {
-            setState(() => _jsonUploaded = true);
-          },
-          icon: Icon(
-            _jsonUploaded ? Icons.check_circle : Icons.upload_file,
-            color: _jsonUploaded ? AppColors.accent : null,
-          ),
-          label: Text(_jsonUploaded ? 'workflow.json uploaded' : 'Upload JSON'),
-        ),
-        const SizedBox(height: 24),
-        Text('Screenshots',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        Row(
-          children: List.generate(
-            3,
-            (i) => Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.border),
-                    borderRadius: AppRadius.sm,
-                  ),
-                  child: const Icon(Icons.add_photo_alternate_outlined,
-                      color: AppColors.textTertiary),
-                ),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 24),
-        AppTextField(
-          controller: _demoVideoController,
-          label: 'Demo Video URL',
-          hint: 'https://youtube.com/...',
-          keyboardType: TextInputType.url,
-        ),
-      ],
-    );
-  }
-
-  // --- Step 2: Pricing ---
-  Widget _buildPricing() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Required Integrations',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: _integrations.map((name) {
-            final selected = _selectedIntegrations.contains(name);
-            return FilterChip(
-              label: Text(name),
-              selected: selected,
-              onSelected: (v) {
-                setState(() {
-                  if (v) {
-                    _selectedIntegrations.add(name);
-                  } else {
-                    _selectedIntegrations.remove(name);
-                  }
-                });
-              },
-            );
-          }).toList(),
-        ),
-        const SizedBox(height: 24),
-        AppTextField(
-          controller: _oneTimePriceController,
-          label: 'One-Time Price (\$)',
-          hint: '29',
-          keyboardType: TextInputType.number,
-        ),
-        const SizedBox(height: 16),
-        AppTextField(
-          controller: _monthlyPriceController,
-          label: 'Monthly Price (\$)',
-          hint: '9',
-          keyboardType: TextInputType.number,
-        ),
-        const SizedBox(height: 16),
-        Text('Estimated Setup Time',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        DropdownButtonFormField<String>(
-          value: _setupTime,
-          decoration: const InputDecoration(hintText: 'Select setup time'),
-          items: _setupTimes
-              .map((t) => DropdownMenuItem(value: t, child: Text(t)))
-              .toList(),
-          onChanged: (v) => setState(() => _setupTime = v),
-        ),
-        const SizedBox(height: 24),
-        Text('Setup Steps',
-            style: AppTypography.labelMedium
-                .copyWith(color: AppColors.textSecondary)),
-        const SizedBox(height: 6),
-        ...List.generate(_stepControllers.length, (i) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: AppTextField(
-                    controller: _stepControllers[i],
-                    hint: 'Step ${i + 1}',
-                  ),
-                ),
-                if (_stepControllers.length > 1)
-                  IconButton(
-                    icon: const Icon(Icons.remove_circle_outline,
-                        color: AppColors.error),
-                    onPressed: () {
-                      setState(() {
-                        _stepControllers[i].dispose();
-                        _stepControllers.removeAt(i);
-                      });
-                    },
-                  ),
-              ],
-            ),
-          );
-        }),
-        TextButton.icon(
-          onPressed: () {
-            setState(() => _stepControllers.add(TextEditingController()));
-          },
-          icon: const Icon(Icons.add),
-          label: const Text('Add Step'),
-        ),
-      ],
-    );
-  }
-
-  // --- Step 3: Review ---
-  Widget _buildReview() {
-    final stepsText = _stepControllers
-        .map((c) => c.text)
-        .where((t) => t.isNotEmpty)
-        .join(' -> ');
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Review Your Workflow', style: AppTypography.h3),
-        const SizedBox(height: 16),
-        _ReviewRow(label: 'Title', value: _titleController.text),
-        _ReviewRow(label: 'Description', value: _descriptionController.text),
-        _ReviewRow(
-          label: 'Category',
-          value: _selectedCategory != null
-              ? CategoryChip.labelFor(_selectedCategory!)
-              : 'Not selected',
-        ),
-        _ReviewRow(label: 'Platform', value: _selectedPlatform.name),
-        _ReviewRow(label: 'Difficulty', value: _selectedDifficulty.name),
-        _ReviewRow(label: 'Tags', value: _tagsController.text),
-        _ReviewRow(
-            label: 'JSON File', value: _jsonUploaded ? 'Uploaded' : 'None'),
-        _ReviewRow(
-          label: 'Demo Video',
-          value: _demoVideoController.text.isEmpty
-              ? 'None'
-              : _demoVideoController.text,
-        ),
-        _ReviewRow(
-          label: 'Integrations',
-          value: _selectedIntegrations.isEmpty
-              ? 'None'
-              : _selectedIntegrations.join(', '),
-        ),
-        _ReviewRow(
-          label: 'One-Time Price',
-          value: _oneTimePriceController.text.isEmpty
-              ? 'Free'
-              : '\$${_oneTimePriceController.text}',
-        ),
-        _ReviewRow(
-          label: 'Monthly Price',
-          value: _monthlyPriceController.text.isEmpty
-              ? 'None'
-              : '\$${_monthlyPriceController.text}/mo',
-        ),
-        _ReviewRow(label: 'Setup Time', value: _setupTime ?? 'Not set'),
-        _ReviewRow(
-          label: 'Steps',
-          value: stepsText.isEmpty ? 'None' : stepsText,
-        ),
-        const SizedBox(height: 24),
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: AppColors.primaryLight,
-            borderRadius: AppRadius.md,
-          ),
-          child: Row(
-            children: [
-              const Icon(Icons.info_outline, color: AppColors.primary),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  'Your workflow will be reviewed by our team before going live. This usually takes 1-2 business days.',
-                  style: AppTypography.bodySmall
-                      .copyWith(color: AppColors.primaryDark),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
 
-class _ReviewRow extends StatelessWidget {
-  const _ReviewRow({required this.label, required this.value});
-
+class _GlassSection extends StatelessWidget {
   final String label;
-  final String value;
+  final Widget child;
+
+  const _GlassSection({required this.label, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 110,
-            child: Text(
-              label,
-              style: AppTypography.labelMedium
-                  .copyWith(color: AppColors.textSecondary),
-            ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.05),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
-          Expanded(
-            child: Text(
-              value.isEmpty ? '-' : value,
-              style: AppTypography.bodyMedium,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (label.isNotEmpty) ...[
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 9,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.5,
+                    color: Colors.white.withValues(alpha: 0.4),
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+              child,
+            ],
           ),
-        ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GlassTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hint;
+  final int maxLines;
+
+  const _GlassTextField({
+    required this.controller,
+    required this.hint,
+    this.maxLines = 1,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.04),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+      ),
+      child: TextField(
+        controller: controller,
+        maxLines: maxLines,
+        style: const TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 14,
+          color: Colors.white,
+        ),
+        cursorColor: const Color(0xFFCEBDFF),
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 14,
+            color: Colors.white.withValues(alpha: 0.25),
+          ),
+          filled: true,
+          fillColor: Colors.transparent,
+          border: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          isDense: true,
+          contentPadding: const EdgeInsets.all(14),
+        ),
+      ),
+    );
+  }
+}
+
+class _PriceInput extends StatelessWidget {
+  final TextEditingController controller;
+
+  const _PriceInput({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.04),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+      ),
+      child: TextField(
+        controller: controller,
+        keyboardType: TextInputType.number,
+        style: const TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+        ),
+        cursorColor: const Color(0xFFCEBDFF),
+        decoration: InputDecoration(
+          prefixText: '\$ ',
+          prefixStyle: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: Colors.white.withValues(alpha: 0.4),
+          ),
+          filled: true,
+          fillColor: Colors.transparent,
+          border: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          isDense: true,
+          contentPadding: const EdgeInsets.all(14),
+        ),
       ),
     );
   }

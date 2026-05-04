@@ -55,6 +55,16 @@
 				<string>flowmarket</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google Sign-In</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.947771628186-vfqigp1o2rsa11bl5l1vsklnm8d160f3</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

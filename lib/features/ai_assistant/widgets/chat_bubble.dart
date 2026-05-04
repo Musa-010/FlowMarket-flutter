@@ -1,11 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_typography.dart';
 import '../../../providers/ai_provider.dart';
 import 'ai_recommendation_card.dart';
 import 'typing_indicator.dart';
+
+String _formatTime(DateTime dt) => DateFormat('h:mm a').format(dt);
 
 class ChatBubble extends StatelessWidget {
   final ChatMessage message;
@@ -17,19 +19,20 @@ class ChatBubble extends StatelessWidget {
     this.showAvatar = true,
   });
 
-  String _formatTime(DateTime dateTime) {
-    return DateFormat('h:mm a').format(dateTime);
+  @override
+  Widget build(BuildContext context) {
+    return message.role == 'user'
+        ? _UserBubble(message: message)
+        : _AssistantBubble(message: message, showAvatar: showAvatar);
   }
+}
+
+class _UserBubble extends StatelessWidget {
+  final ChatMessage message;
+  const _UserBubble({required this.message});
 
   @override
   Widget build(BuildContext context) {
-    if (message.role == 'user') {
-      return _buildUserBubble(context);
-    }
-    return _buildAssistantBubble(context);
-  }
-
-  Widget _buildUserBubble(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Column(
@@ -40,21 +43,25 @@ class ChatBubble extends StatelessWidget {
             children: [
               Flexible(
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 12),
                   decoration: const BoxDecoration(
-                    color: AppColors.primary,
+                    color: Color(0xFFA78BFA),
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                      bottomLeft: Radius.circular(16),
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(4),
                     ),
                   ),
                   child: Text(
                     message.content,
-                    style: AppTypography.bodyMedium.copyWith(
+                    style: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 15,
                       color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5,
                     ),
                   ),
                 ),
@@ -63,11 +70,13 @@ class ChatBubble extends StatelessWidget {
           ),
           if (!message.isLoading)
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 4, right: 4),
               child: Text(
                 _formatTime(message.timestamp),
-                style: AppTypography.caption.copyWith(
-                  color: AppColors.textTertiary,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 11,
+                  color: const Color(0xFFE0E3E5).withValues(alpha: 0.4),
                 ),
               ),
             ),
@@ -75,8 +84,16 @@ class ChatBubble extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildAssistantBubble(BuildContext context) {
+class _AssistantBubble extends StatelessWidget {
+  final ChatMessage message;
+  final bool showAvatar;
+  const _AssistantBubble(
+      {required this.message, required this.showAvatar});
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Row(
@@ -84,11 +101,11 @@ class ChatBubble extends StatelessWidget {
         children: [
           if (showAvatar)
             Container(
-              width: 28,
-              height: 28,
+              width: 30,
+              height: 30,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [AppColors.primary, AppColors.accent],
+                  colors: [Color(0xFF8B5CF6), Color(0xFFD946EF)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -101,44 +118,63 @@ class ChatBubble extends StatelessWidget {
               ),
             )
           else
-            const SizedBox(width: 28),
+            const SizedBox(width: 30),
           const SizedBox(width: 8),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  decoration: const BoxDecoration(
-                    color: AppColors.surfaceVariant,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                      bottomLeft: Radius.circular(4),
-                      bottomRight: Radius.circular(16),
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4),
+                    topRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 12),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.08),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(4),
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        border: Border.all(
+                          color: Colors.white.withValues(alpha: 0.12),
+                        ),
+                      ),
+                      child: message.isLoading
+                          ? const TypingIndicator()
+                          : Text(
+                              message.content,
+                              style: const TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 15,
+                                color: Color(0xFFE0E3E5),
+                                height: 1.5,
+                              ),
+                            ),
                     ),
                   ),
-                  child: message.isLoading
-                      ? const TypingIndicator()
-                      : Text(
-                          message.content,
-                          style: AppTypography.bodyMedium.copyWith(
-                            color: AppColors.textPrimary,
-                          ),
-                        ),
                 ),
-                if (!message.isLoading && message.recommendations.isNotEmpty)
-                  ...message.recommendations.map(
-                    (workflow) => AiRecommendationCard(workflow: workflow),
-                  ),
+                if (!message.isLoading &&
+                    message.recommendations.isNotEmpty)
+                  ...message.recommendations
+                      .map((w) => AiRecommendationCard(workflow: w)),
                 if (!message.isLoading)
                   Padding(
-                    padding: const EdgeInsets.only(top: 4),
+                    padding: const EdgeInsets.only(top: 4, left: 4),
                     child: Text(
                       _formatTime(message.timestamp),
-                      style: AppTypography.caption.copyWith(
-                        color: AppColors.textTertiary,
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 11,
+                        color: const Color(0xFFE0E3E5).withValues(alpha: 0.4),
                       ),
                     ),
                   ),

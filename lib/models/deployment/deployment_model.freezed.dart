@@ -12,8 +12,7 @@ part of 'deployment_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Deployment _$DeploymentFromJson(Map<String, dynamic> json) {
   return _Deployment.fromJson(json);
@@ -46,23 +45,21 @@ mixin _$Deployment {
 /// @nodoc
 abstract class $DeploymentCopyWith<$Res> {
   factory $DeploymentCopyWith(
-    Deployment value,
-    $Res Function(Deployment) then,
-  ) = _$DeploymentCopyWithImpl<$Res, Deployment>;
+          Deployment value, $Res Function(Deployment) then) =
+      _$DeploymentCopyWithImpl<$Res, Deployment>;
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    String workflowId,
-    DeploymentStatus status,
-    String? n8nWorkflowId,
-    Map<String, dynamic> config,
-    int totalExecutions,
-    DateTime? lastRunAt,
-    Workflow? workflow,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      String workflowId,
+      DeploymentStatus status,
+      String? n8nWorkflowId,
+      Map<String, dynamic> config,
+      int totalExecutions,
+      DateTime? lastRunAt,
+      Workflow? workflow,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 
   $WorkflowCopyWith<$Res>? get workflow;
 }
@@ -94,55 +91,52 @@ class _$DeploymentCopyWithImpl<$Res, $Val extends Deployment>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            workflowId: null == workflowId
-                ? _value.workflowId
-                : workflowId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as DeploymentStatus,
-            n8nWorkflowId: freezed == n8nWorkflowId
-                ? _value.n8nWorkflowId
-                : n8nWorkflowId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            config: null == config
-                ? _value.config
-                : config // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>,
-            totalExecutions: null == totalExecutions
-                ? _value.totalExecutions
-                : totalExecutions // ignore: cast_nullable_to_non_nullable
-                      as int,
-            lastRunAt: freezed == lastRunAt
-                ? _value.lastRunAt
-                : lastRunAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            workflow: freezed == workflow
-                ? _value.workflow
-                : workflow // ignore: cast_nullable_to_non_nullable
-                      as Workflow?,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      workflowId: null == workflowId
+          ? _value.workflowId
+          : workflowId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as DeploymentStatus,
+      n8nWorkflowId: freezed == n8nWorkflowId
+          ? _value.n8nWorkflowId
+          : n8nWorkflowId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      config: null == config
+          ? _value.config
+          : config // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      totalExecutions: null == totalExecutions
+          ? _value.totalExecutions
+          : totalExecutions // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastRunAt: freezed == lastRunAt
+          ? _value.lastRunAt
+          : lastRunAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      workflow: freezed == workflow
+          ? _value.workflow
+          : workflow // ignore: cast_nullable_to_non_nullable
+              as Workflow?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 
   /// Create a copy of Deployment
@@ -164,24 +158,22 @@ class _$DeploymentCopyWithImpl<$Res, $Val extends Deployment>
 abstract class _$$DeploymentImplCopyWith<$Res>
     implements $DeploymentCopyWith<$Res> {
   factory _$$DeploymentImplCopyWith(
-    _$DeploymentImpl value,
-    $Res Function(_$DeploymentImpl) then,
-  ) = __$$DeploymentImplCopyWithImpl<$Res>;
+          _$DeploymentImpl value, $Res Function(_$DeploymentImpl) then) =
+      __$$DeploymentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    String workflowId,
-    DeploymentStatus status,
-    String? n8nWorkflowId,
-    Map<String, dynamic> config,
-    int totalExecutions,
-    DateTime? lastRunAt,
-    Workflow? workflow,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      String workflowId,
+      DeploymentStatus status,
+      String? n8nWorkflowId,
+      Map<String, dynamic> config,
+      int totalExecutions,
+      DateTime? lastRunAt,
+      Workflow? workflow,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 
   @override
   $WorkflowCopyWith<$Res>? get workflow;
@@ -192,9 +184,8 @@ class __$$DeploymentImplCopyWithImpl<$Res>
     extends _$DeploymentCopyWithImpl<$Res, _$DeploymentImpl>
     implements _$$DeploymentImplCopyWith<$Res> {
   __$$DeploymentImplCopyWithImpl(
-    _$DeploymentImpl _value,
-    $Res Function(_$DeploymentImpl) _then,
-  ) : super(_value, _then);
+      _$DeploymentImpl _value, $Res Function(_$DeploymentImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Deployment
   /// with the given fields replaced by the non-null parameter values.
@@ -213,73 +204,71 @@ class __$$DeploymentImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$DeploymentImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        workflowId: null == workflowId
-            ? _value.workflowId
-            : workflowId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as DeploymentStatus,
-        n8nWorkflowId: freezed == n8nWorkflowId
-            ? _value.n8nWorkflowId
-            : n8nWorkflowId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        config: null == config
-            ? _value._config
-            : config // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
-        totalExecutions: null == totalExecutions
-            ? _value.totalExecutions
-            : totalExecutions // ignore: cast_nullable_to_non_nullable
-                  as int,
-        lastRunAt: freezed == lastRunAt
-            ? _value.lastRunAt
-            : lastRunAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        workflow: freezed == workflow
-            ? _value.workflow
-            : workflow // ignore: cast_nullable_to_non_nullable
-                  as Workflow?,
-        createdAt: freezed == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$DeploymentImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      workflowId: null == workflowId
+          ? _value.workflowId
+          : workflowId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as DeploymentStatus,
+      n8nWorkflowId: freezed == n8nWorkflowId
+          ? _value.n8nWorkflowId
+          : n8nWorkflowId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      config: null == config
+          ? _value._config
+          : config // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      totalExecutions: null == totalExecutions
+          ? _value.totalExecutions
+          : totalExecutions // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastRunAt: freezed == lastRunAt
+          ? _value.lastRunAt
+          : lastRunAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      workflow: freezed == workflow
+          ? _value.workflow
+          : workflow // ignore: cast_nullable_to_non_nullable
+              as Workflow?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DeploymentImpl implements _Deployment {
-  const _$DeploymentImpl({
-    required this.id,
-    required this.userId,
-    required this.workflowId,
-    required this.status,
-    this.n8nWorkflowId,
-    final Map<String, dynamic> config = const {},
-    this.totalExecutions = 0,
-    this.lastRunAt,
-    this.workflow,
-    this.createdAt,
-    this.updatedAt,
-  }) : _config = config;
+  const _$DeploymentImpl(
+      {required this.id,
+      required this.userId,
+      required this.workflowId,
+      required this.status,
+      this.n8nWorkflowId,
+      final Map<String, dynamic> config = const {},
+      this.totalExecutions = 0,
+      this.lastRunAt,
+      this.workflow,
+      this.createdAt,
+      this.updatedAt})
+      : _config = config;
 
   factory _$DeploymentImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeploymentImplFromJson(json);
@@ -348,19 +337,18 @@ class _$DeploymentImpl implements _Deployment {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    workflowId,
-    status,
-    n8nWorkflowId,
-    const DeepCollectionEquality().hash(_config),
-    totalExecutions,
-    lastRunAt,
-    workflow,
-    createdAt,
-    updatedAt,
-  );
+      runtimeType,
+      id,
+      userId,
+      workflowId,
+      status,
+      n8nWorkflowId,
+      const DeepCollectionEquality().hash(_config),
+      totalExecutions,
+      lastRunAt,
+      workflow,
+      createdAt,
+      updatedAt);
 
   /// Create a copy of Deployment
   /// with the given fields replaced by the non-null parameter values.
@@ -372,24 +360,25 @@ class _$DeploymentImpl implements _Deployment {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeploymentImplToJson(this);
+    return _$$DeploymentImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Deployment implements Deployment {
-  const factory _Deployment({
-    required final String id,
-    required final String userId,
-    required final String workflowId,
-    required final DeploymentStatus status,
-    final String? n8nWorkflowId,
-    final Map<String, dynamic> config,
-    final int totalExecutions,
-    final DateTime? lastRunAt,
-    final Workflow? workflow,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
-  }) = _$DeploymentImpl;
+  const factory _Deployment(
+      {required final String id,
+      required final String userId,
+      required final String workflowId,
+      required final DeploymentStatus status,
+      final String? n8nWorkflowId,
+      final Map<String, dynamic> config,
+      final int totalExecutions,
+      final DateTime? lastRunAt,
+      final Workflow? workflow,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$DeploymentImpl;
 
   factory _Deployment.fromJson(Map<String, dynamic> json) =
       _$DeploymentImpl.fromJson;
@@ -451,18 +440,16 @@ mixin _$ExecutionLog {
 /// @nodoc
 abstract class $ExecutionLogCopyWith<$Res> {
   factory $ExecutionLogCopyWith(
-    ExecutionLog value,
-    $Res Function(ExecutionLog) then,
-  ) = _$ExecutionLogCopyWithImpl<$Res, ExecutionLog>;
+          ExecutionLog value, $Res Function(ExecutionLog) then) =
+      _$ExecutionLogCopyWithImpl<$Res, ExecutionLog>;
   @useResult
-  $Res call({
-    String id,
-    String deploymentId,
-    bool success,
-    int durationMs,
-    String? errorMessage,
-    DateTime? executedAt,
-  });
+  $Res call(
+      {String id,
+      String deploymentId,
+      bool success,
+      int durationMs,
+      String? errorMessage,
+      DateTime? executedAt});
 }
 
 /// @nodoc
@@ -487,35 +474,32 @@ class _$ExecutionLogCopyWithImpl<$Res, $Val extends ExecutionLog>
     Object? errorMessage = freezed,
     Object? executedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            deploymentId: null == deploymentId
-                ? _value.deploymentId
-                : deploymentId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            success: null == success
-                ? _value.success
-                : success // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            durationMs: null == durationMs
-                ? _value.durationMs
-                : durationMs // ignore: cast_nullable_to_non_nullable
-                      as int,
-            errorMessage: freezed == errorMessage
-                ? _value.errorMessage
-                : errorMessage // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            executedAt: freezed == executedAt
-                ? _value.executedAt
-                : executedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      deploymentId: null == deploymentId
+          ? _value.deploymentId
+          : deploymentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
+      durationMs: null == durationMs
+          ? _value.durationMs
+          : durationMs // ignore: cast_nullable_to_non_nullable
+              as int,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      executedAt: freezed == executedAt
+          ? _value.executedAt
+          : executedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
@@ -523,19 +507,17 @@ class _$ExecutionLogCopyWithImpl<$Res, $Val extends ExecutionLog>
 abstract class _$$ExecutionLogImplCopyWith<$Res>
     implements $ExecutionLogCopyWith<$Res> {
   factory _$$ExecutionLogImplCopyWith(
-    _$ExecutionLogImpl value,
-    $Res Function(_$ExecutionLogImpl) then,
-  ) = __$$ExecutionLogImplCopyWithImpl<$Res>;
+          _$ExecutionLogImpl value, $Res Function(_$ExecutionLogImpl) then) =
+      __$$ExecutionLogImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String deploymentId,
-    bool success,
-    int durationMs,
-    String? errorMessage,
-    DateTime? executedAt,
-  });
+  $Res call(
+      {String id,
+      String deploymentId,
+      bool success,
+      int durationMs,
+      String? errorMessage,
+      DateTime? executedAt});
 }
 
 /// @nodoc
@@ -543,9 +525,8 @@ class __$$ExecutionLogImplCopyWithImpl<$Res>
     extends _$ExecutionLogCopyWithImpl<$Res, _$ExecutionLogImpl>
     implements _$$ExecutionLogImplCopyWith<$Res> {
   __$$ExecutionLogImplCopyWithImpl(
-    _$ExecutionLogImpl _value,
-    $Res Function(_$ExecutionLogImpl) _then,
-  ) : super(_value, _then);
+      _$ExecutionLogImpl _value, $Res Function(_$ExecutionLogImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ExecutionLog
   /// with the given fields replaced by the non-null parameter values.
@@ -559,48 +540,45 @@ class __$$ExecutionLogImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? executedAt = freezed,
   }) {
-    return _then(
-      _$ExecutionLogImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        deploymentId: null == deploymentId
-            ? _value.deploymentId
-            : deploymentId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        success: null == success
-            ? _value.success
-            : success // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        durationMs: null == durationMs
-            ? _value.durationMs
-            : durationMs // ignore: cast_nullable_to_non_nullable
-                  as int,
-        errorMessage: freezed == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        executedAt: freezed == executedAt
-            ? _value.executedAt
-            : executedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$ExecutionLogImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      deploymentId: null == deploymentId
+          ? _value.deploymentId
+          : deploymentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
+      durationMs: null == durationMs
+          ? _value.durationMs
+          : durationMs // ignore: cast_nullable_to_non_nullable
+              as int,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      executedAt: freezed == executedAt
+          ? _value.executedAt
+          : executedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ExecutionLogImpl implements _ExecutionLog {
-  const _$ExecutionLogImpl({
-    required this.id,
-    required this.deploymentId,
-    required this.success,
-    required this.durationMs,
-    this.errorMessage,
-    this.executedAt,
-  });
+  const _$ExecutionLogImpl(
+      {required this.id,
+      required this.deploymentId,
+      required this.success,
+      required this.durationMs,
+      this.errorMessage,
+      this.executedAt});
 
   factory _$ExecutionLogImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExecutionLogImplFromJson(json);
@@ -642,15 +620,8 @@ class _$ExecutionLogImpl implements _ExecutionLog {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    deploymentId,
-    success,
-    durationMs,
-    errorMessage,
-    executedAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, deploymentId, success,
+      durationMs, errorMessage, executedAt);
 
   /// Create a copy of ExecutionLog
   /// with the given fields replaced by the non-null parameter values.
@@ -662,19 +633,20 @@ class _$ExecutionLogImpl implements _ExecutionLog {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ExecutionLogImplToJson(this);
+    return _$$ExecutionLogImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ExecutionLog implements ExecutionLog {
-  const factory _ExecutionLog({
-    required final String id,
-    required final String deploymentId,
-    required final bool success,
-    required final int durationMs,
-    final String? errorMessage,
-    final DateTime? executedAt,
-  }) = _$ExecutionLogImpl;
+  const factory _ExecutionLog(
+      {required final String id,
+      required final String deploymentId,
+      required final bool success,
+      required final int durationMs,
+      final String? errorMessage,
+      final DateTime? executedAt}) = _$ExecutionLogImpl;
 
   factory _ExecutionLog.fromJson(Map<String, dynamic> json) =
       _$ExecutionLogImpl.fromJson;

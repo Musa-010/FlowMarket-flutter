@@ -52,6 +52,12 @@ dependencies:
   # Firebase
   firebase_core: ^2.31.0
   firebase_messaging: ^14.9.2
+  firebase_auth: ^4.19.4
+  google_sign_in: ^6.2.1
+  sign_in_with_apple: ^6.1.1
+
+  # Supabase (email OTP)
+  supabase_flutter: ^2.5.0
 
   # File & Image Pickers
   file_picker: ^8.0.3

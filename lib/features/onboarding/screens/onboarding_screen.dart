@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_strings.dart';
-import '../../../core/constants/app_typography.dart';
 import '../../../core/storage/hive_storage.dart';
-import '../../../shared/widgets/app_button.dart';
+import '../../../shared/widgets/glass_widgets.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -63,24 +61,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
+      backgroundColor: const Color(0xFF101415),
+      body: GlassBg(
         child: Column(
           children: [
-            // Skip button
-            Align(
-              alignment: Alignment.topRight,
-              child: _currentPage < _pages.length - 1
-                  ? TextButton(
-                      onPressed: _completeOnboarding,
-                      child: Text(
-                        AppStrings.skip,
-                        style: AppTypography.labelLarge.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(height: 48),
+            // Glass header
+            _GlassHeader(
+              onSkip: _currentPage < _pages.length - 1
+                  ? _completeOnboarding
+                  : null,
             ),
 
             // Page content
@@ -88,57 +77,127 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: _pages.length,
-                onPageChanged: (index) {
-                  setState(() => _currentPage = index);
-                },
-                itemBuilder: (context, index) {
-                  final page = _pages[index];
-                  return _OnboardingPage(data: page);
-                },
+                onPageChanged: (i) => setState(() => _currentPage = i),
+                itemBuilder: (context, index) =>
+                    _OnboardingPage(data: _pages[index]),
               ),
             ),
 
-            // Bottom section
+            // Bottom actions
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.xxl,
-                vertical: AppSpacing.xxxl,
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xxl,
+                0,
+                AppSpacing.xxl,
+                AppSpacing.xxxl,
               ),
               child: Column(
                 children: [
                   // Dot indicators
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(_pages.length, (index) {
-                      final isActive = index == _currentPage;
+                    children: List.generate(_pages.length, (i) {
+                      final active = i == _currentPage;
                       return AnimatedContainer(
                         duration: const Duration(milliseconds: 300),
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.xs,
-                        ),
-                        width: isActive ? 24 : 8,
-                        height: 8,
+                        margin: const EdgeInsets.symmetric(horizontal: 3),
+                        width: active ? 24 : 8,
+                        height: 6,
                         decoration: BoxDecoration(
-                          color: isActive
-                              ? AppColors.primary
-                              : AppColors.border,
                           borderRadius: BorderRadius.circular(4),
+                          color: active
+                              ? const Color(0xFFA78BFA)
+                              : Colors.white.withValues(alpha: 0.2),
+                          boxShadow: active
+                              ? [
+                                  BoxShadow(
+                                    color: const Color(0xFFA78BFA)
+                                        .withValues(alpha: 0.5),
+                                    blurRadius: 8,
+                                  )
+                                ]
+                              : null,
                         ),
                       );
                     }),
                   ),
                   const SizedBox(height: AppSpacing.xxxl),
 
-                  // Action button
-                  AppButton(
+                  GlassButton(
                     label: _currentPage == _pages.length - 1
                         ? AppStrings.getStarted
                         : AppStrings.next,
                     onPressed: _nextPage,
+                    trailing: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
+
+                  TextButton(
+                    onPressed: _completeOnboarding,
+                    child: Text(
+                      'Skip Introduction',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 13,
+                        color: const Color(0xFFCAC4D4).withValues(alpha: 0.6),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GlassHeader extends StatelessWidget {
+  final VoidCallback? onSkip;
+  const _GlassHeader({this.onSkip});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GradientText(
+              AppStrings.appName,
+              style: const TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 22,
+                fontWeight: FontWeight.w900,
+                letterSpacing: -0.5,
+              ),
+            ),
+            if (onSkip != null)
+              GlassCard(
+                borderRadius: BorderRadius.circular(999),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                child: IconButton(
+                  onPressed: onSkip,
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Color(0xFFCEBDFF),
+                    size: 20,
+                  ),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(
+                    minWidth: 36,
+                    minHeight: 36,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
@@ -160,45 +219,83 @@ class _OnboardingPageData {
 
 class _OnboardingPage extends StatelessWidget {
   final _OnboardingPageData data;
-
   const _OnboardingPage({required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Image placeholder
-          Container(
-            height: 300,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: AppColors.primaryLight,
-              borderRadius: BorderRadius.circular(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: GlassCard(
+        borderRadius: BorderRadius.circular(28),
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            // Icon illustration area
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      const Color(0xFF3C1989).withValues(alpha: 0.5),
+                      const Color(0xFF6A0045).withValues(alpha: 0.3),
+                    ],
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: const Color(0xFFA78BFA).withValues(alpha: 0.15),
+                        border: Border.all(
+                          color: const Color(0xFFCEBDFF).withValues(alpha: 0.2),
+                        ),
+                      ),
+                      child: Icon(
+                        data.icon,
+                        size: 56,
+                        color: const Color(0xFFCEBDFF),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            child: Icon(
-              data.icon,
-              size: 100,
-              color: AppColors.primary,
+            const SizedBox(height: 24),
+
+            // Title
+            Text(
+              data.title,
+              style: const TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+                letterSpacing: -0.5,
+              ),
+              textAlign: TextAlign.center,
             ),
-          ),
-          const SizedBox(height: AppSpacing.xxxl),
-          Text(
-            data.title,
-            style: AppTypography.h2,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.md),
-          Text(
-            data.body,
-            style: AppTypography.bodyMedium.copyWith(
-              color: AppColors.textSecondary,
+            const SizedBox(height: 12),
+
+            // Body
+            Text(
+              data.body,
+              style: const TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 15,
+                color: Color(0xFFCAC4D4),
+                height: 1.6,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

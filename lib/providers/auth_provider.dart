@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../core/services/social_auth_service.dart';
 import '../core/storage/secure_storage.dart';
 import '../core/storage/hive_storage.dart';
 import '../models/user/user_model.dart';
@@ -70,7 +71,48 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
     }
   }
 
+  Future<void> loginWithGoogle() async {
+    state = const AsyncValue.loading();
+    try {
+      final token = await SocialAuthService.signInWithGoogle();
+      if (token == null) {
+        state = const AsyncValue.data(null);
+        return;
+      }
+      final result =
+          await _ref.read(authRepositoryProvider).loginWithGoogle(token);
+      await _ref.read(secureStorageProvider).saveTokens(
+            accessToken: result.accessToken,
+            refreshToken: result.refreshToken,
+          );
+      state = AsyncValue.data(result.user);
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+    }
+  }
+
+  Future<void> loginWithApple() async {
+    state = const AsyncValue.loading();
+    try {
+      final token = await SocialAuthService.signInWithApple();
+      if (token == null) {
+        state = const AsyncValue.data(null);
+        return;
+      }
+      final result =
+          await _ref.read(authRepositoryProvider).loginWithApple(token);
+      await _ref.read(secureStorageProvider).saveTokens(
+            accessToken: result.accessToken,
+            refreshToken: result.refreshToken,
+          );
+      state = AsyncValue.data(result.user);
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+    }
+  }
+
   Future<void> logout() async {
+    await SocialAuthService.signOutGoogle();
     await _ref.read(secureStorageProvider).clearTokens();
     await _ref.read(hiveStorageProvider).clearCache();
     state = const AsyncValue.data(null);

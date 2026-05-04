@@ -23,6 +23,9 @@ class Validators {
   static String? fullName(String? value) {
     if (value == null || value.isEmpty) return 'Full name is required';
     if (value.length < 2) return 'Name must be at least 2 characters';
+    if (RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+      return 'Enter your name, not an email address';
+    }
     return null;
   }
 

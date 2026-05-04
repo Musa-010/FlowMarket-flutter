@@ -28,7 +28,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'auth/login',
+            '/auth/login',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -56,7 +56,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'auth/register',
+            '/auth/register',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -83,7 +83,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'auth/me',
+            '/auth/me',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -111,7 +111,49 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'auth/forgot-password',
+            '/auth/forgot-password',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<dynamic> verifyResetOtp(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<dynamic>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/auth/verify-reset-otp',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    return _value;
+  }
+
+  @override
+  Future<void> resetPassword(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/auth/reset-password',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -131,7 +173,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'workflows',
+            '/workflows',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -152,7 +194,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'workflows/featured',
+            '/workflows/featured',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -173,7 +215,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'workflows/${slug}',
+            '/workflows/${slug}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -195,7 +237,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'ai/recommend',
+            '/ai/recommend',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -217,7 +259,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'purchases',
+            '/purchases',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -239,7 +281,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'checkout/one-time',
+            '/checkout/one-time',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -261,7 +303,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'checkout/subscription',
+            '/checkout/subscription',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -282,7 +324,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments',
+            '/deployments',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -303,7 +345,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments/${id}',
+            '/deployments/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -325,7 +367,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments',
+            '/deployments',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -350,7 +392,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments/${id}/configure',
+            '/deployments/${id}/configure',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -371,7 +413,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments/${id}/pause',
+            '/deployments/${id}/pause',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -392,7 +434,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments/${id}/resume',
+            '/deployments/${id}/resume',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -413,7 +455,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments/${id}/stop',
+            '/deployments/${id}/stop',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -438,7 +480,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'deployments/${id}/logs',
+            '/deployments/${id}/logs',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -459,7 +501,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'seller/workflows',
+            '/seller/workflows',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -481,7 +523,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'seller/workflows',
+            '/seller/workflows',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -506,7 +548,7 @@ class _ApiService implements ApiService {
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'seller/workflows/${id}',
+            '/seller/workflows/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -527,7 +569,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'seller/workflows/${id}/submit',
+            '/seller/workflows/${id}/submit',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -548,7 +590,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'seller/earnings',
+            '/seller/earnings',
             queryParameters: queryParameters,
             data: _data,
           )

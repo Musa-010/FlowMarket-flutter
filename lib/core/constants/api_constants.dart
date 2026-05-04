@@ -11,6 +11,8 @@ class ApiConstants {
   static const refreshToken = '/auth/refresh';
   static const currentUser = '/auth/me';
   static const forgotPassword = '/auth/forgot-password';
+  static const verifyResetOtp = '/auth/verify-reset-otp';
+  static const resetPassword = '/auth/reset-password';
 
   // Workflows
   static const workflows = '/workflows';
@@ -32,6 +34,10 @@ class ApiConstants {
   // Seller
   static const sellerWorkflows = '/seller/workflows';
   static const sellerEarnings = '/seller/earnings';
+
+  // Social Auth
+  static const googleAuth = '/auth/google';
+  static const appleAuth = '/auth/apple';
 
   // Notifications
   static const notifications = '/notifications';

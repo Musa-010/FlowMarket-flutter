@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-
 class TypingIndicator extends StatefulWidget {
   const TypingIndicator({super.key});
 
@@ -40,9 +38,9 @@ class _TypingIndicatorState extends State<TypingIndicator>
           return AnimatedBuilder(
             listenable: _controller,
             builder: (context, child) {
-              final offset = index * 200 / 1200; // stagger: 0ms, 200ms, 400ms
+              final offset = index * 200 / 1200;
               final value = (_controller.value + offset) % 1.0;
-              final dy = -4 * sin(value * pi); // bounce using sin curve
+              final dy = -4 * sin(value * pi);
               return Transform.translate(
                 offset: Offset(0, dy),
                 child: child,
@@ -52,8 +50,8 @@ class _TypingIndicatorState extends State<TypingIndicator>
               width: 8,
               height: 8,
               margin: EdgeInsets.only(right: index < 2 ? 4 : 0),
-              decoration: BoxDecoration(
-                color: AppColors.textTertiary,
+              decoration: const BoxDecoration(
+                color: Color(0xFFA78BFA),
                 shape: BoxShape.circle,
               ),
             ),

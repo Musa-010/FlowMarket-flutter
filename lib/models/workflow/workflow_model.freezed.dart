@@ -12,8 +12,7 @@ part of 'workflow_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Workflow _$WorkflowFromJson(Map<String, dynamic> json) {
   return _Workflow.fromJson(json);
@@ -64,35 +63,34 @@ abstract class $WorkflowCopyWith<$Res> {
   factory $WorkflowCopyWith(Workflow value, $Res Function(Workflow) then) =
       _$WorkflowCopyWithImpl<$Res, Workflow>;
   @useResult
-  $Res call({
-    String id,
-    String title,
-    String slug,
-    String shortDescription,
-    String? fullDescription,
-    WorkflowPlatform platform,
-    WorkflowCategory category,
-    WorkflowDifficulty difficulty,
-    double? oneTimePrice,
-    double? monthlyPrice,
-    List<String> previewImages,
-    List<String> requiredIntegrations,
-    List<String> tags,
-    List<String> steps,
-    String? demoVideoUrl,
-    String? workflowFileUrl,
-    double avgRating,
-    int reviewCount,
-    int purchaseCount,
-    String? setupTime,
-    WorkflowStatus status,
-    String? sellerId,
-    String? sellerName,
-    String? sellerAvatarUrl,
-    bool isFeatured,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String title,
+      String slug,
+      String shortDescription,
+      String? fullDescription,
+      WorkflowPlatform platform,
+      WorkflowCategory category,
+      WorkflowDifficulty difficulty,
+      double? oneTimePrice,
+      double? monthlyPrice,
+      List<String> previewImages,
+      List<String> requiredIntegrations,
+      List<String> tags,
+      List<String> steps,
+      String? demoVideoUrl,
+      String? workflowFileUrl,
+      double avgRating,
+      int reviewCount,
+      int purchaseCount,
+      String? setupTime,
+      WorkflowStatus status,
+      String? sellerId,
+      String? sellerName,
+      String? sellerAvatarUrl,
+      bool isFeatured,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -138,119 +136,116 @@ class _$WorkflowCopyWithImpl<$Res, $Val extends Workflow>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            slug: null == slug
-                ? _value.slug
-                : slug // ignore: cast_nullable_to_non_nullable
-                      as String,
-            shortDescription: null == shortDescription
-                ? _value.shortDescription
-                : shortDescription // ignore: cast_nullable_to_non_nullable
-                      as String,
-            fullDescription: freezed == fullDescription
-                ? _value.fullDescription
-                : fullDescription // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            platform: null == platform
-                ? _value.platform
-                : platform // ignore: cast_nullable_to_non_nullable
-                      as WorkflowPlatform,
-            category: null == category
-                ? _value.category
-                : category // ignore: cast_nullable_to_non_nullable
-                      as WorkflowCategory,
-            difficulty: null == difficulty
-                ? _value.difficulty
-                : difficulty // ignore: cast_nullable_to_non_nullable
-                      as WorkflowDifficulty,
-            oneTimePrice: freezed == oneTimePrice
-                ? _value.oneTimePrice
-                : oneTimePrice // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            monthlyPrice: freezed == monthlyPrice
-                ? _value.monthlyPrice
-                : monthlyPrice // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            previewImages: null == previewImages
-                ? _value.previewImages
-                : previewImages // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            requiredIntegrations: null == requiredIntegrations
-                ? _value.requiredIntegrations
-                : requiredIntegrations // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            tags: null == tags
-                ? _value.tags
-                : tags // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            steps: null == steps
-                ? _value.steps
-                : steps // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            demoVideoUrl: freezed == demoVideoUrl
-                ? _value.demoVideoUrl
-                : demoVideoUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            workflowFileUrl: freezed == workflowFileUrl
-                ? _value.workflowFileUrl
-                : workflowFileUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            avgRating: null == avgRating
-                ? _value.avgRating
-                : avgRating // ignore: cast_nullable_to_non_nullable
-                      as double,
-            reviewCount: null == reviewCount
-                ? _value.reviewCount
-                : reviewCount // ignore: cast_nullable_to_non_nullable
-                      as int,
-            purchaseCount: null == purchaseCount
-                ? _value.purchaseCount
-                : purchaseCount // ignore: cast_nullable_to_non_nullable
-                      as int,
-            setupTime: freezed == setupTime
-                ? _value.setupTime
-                : setupTime // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as WorkflowStatus,
-            sellerId: freezed == sellerId
-                ? _value.sellerId
-                : sellerId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sellerName: freezed == sellerName
-                ? _value.sellerName
-                : sellerName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sellerAvatarUrl: freezed == sellerAvatarUrl
-                ? _value.sellerAvatarUrl
-                : sellerAvatarUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isFeatured: null == isFeatured
-                ? _value.isFeatured
-                : isFeatured // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      slug: null == slug
+          ? _value.slug
+          : slug // ignore: cast_nullable_to_non_nullable
+              as String,
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullDescription: freezed == fullDescription
+          ? _value.fullDescription
+          : fullDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+      platform: null == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as WorkflowPlatform,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as WorkflowCategory,
+      difficulty: null == difficulty
+          ? _value.difficulty
+          : difficulty // ignore: cast_nullable_to_non_nullable
+              as WorkflowDifficulty,
+      oneTimePrice: freezed == oneTimePrice
+          ? _value.oneTimePrice
+          : oneTimePrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      monthlyPrice: freezed == monthlyPrice
+          ? _value.monthlyPrice
+          : monthlyPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      previewImages: null == previewImages
+          ? _value.previewImages
+          : previewImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      requiredIntegrations: null == requiredIntegrations
+          ? _value.requiredIntegrations
+          : requiredIntegrations // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      tags: null == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      steps: null == steps
+          ? _value.steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      demoVideoUrl: freezed == demoVideoUrl
+          ? _value.demoVideoUrl
+          : demoVideoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workflowFileUrl: freezed == workflowFileUrl
+          ? _value.workflowFileUrl
+          : workflowFileUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avgRating: null == avgRating
+          ? _value.avgRating
+          : avgRating // ignore: cast_nullable_to_non_nullable
+              as double,
+      reviewCount: null == reviewCount
+          ? _value.reviewCount
+          : reviewCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      purchaseCount: null == purchaseCount
+          ? _value.purchaseCount
+          : purchaseCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      setupTime: freezed == setupTime
+          ? _value.setupTime
+          : setupTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as WorkflowStatus,
+      sellerId: freezed == sellerId
+          ? _value.sellerId
+          : sellerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sellerName: freezed == sellerName
+          ? _value.sellerName
+          : sellerName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sellerAvatarUrl: freezed == sellerAvatarUrl
+          ? _value.sellerAvatarUrl
+          : sellerAvatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isFeatured: null == isFeatured
+          ? _value.isFeatured
+          : isFeatured // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
@@ -258,40 +253,38 @@ class _$WorkflowCopyWithImpl<$Res, $Val extends Workflow>
 abstract class _$$WorkflowImplCopyWith<$Res>
     implements $WorkflowCopyWith<$Res> {
   factory _$$WorkflowImplCopyWith(
-    _$WorkflowImpl value,
-    $Res Function(_$WorkflowImpl) then,
-  ) = __$$WorkflowImplCopyWithImpl<$Res>;
+          _$WorkflowImpl value, $Res Function(_$WorkflowImpl) then) =
+      __$$WorkflowImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String title,
-    String slug,
-    String shortDescription,
-    String? fullDescription,
-    WorkflowPlatform platform,
-    WorkflowCategory category,
-    WorkflowDifficulty difficulty,
-    double? oneTimePrice,
-    double? monthlyPrice,
-    List<String> previewImages,
-    List<String> requiredIntegrations,
-    List<String> tags,
-    List<String> steps,
-    String? demoVideoUrl,
-    String? workflowFileUrl,
-    double avgRating,
-    int reviewCount,
-    int purchaseCount,
-    String? setupTime,
-    WorkflowStatus status,
-    String? sellerId,
-    String? sellerName,
-    String? sellerAvatarUrl,
-    bool isFeatured,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String title,
+      String slug,
+      String shortDescription,
+      String? fullDescription,
+      WorkflowPlatform platform,
+      WorkflowCategory category,
+      WorkflowDifficulty difficulty,
+      double? oneTimePrice,
+      double? monthlyPrice,
+      List<String> previewImages,
+      List<String> requiredIntegrations,
+      List<String> tags,
+      List<String> steps,
+      String? demoVideoUrl,
+      String? workflowFileUrl,
+      double avgRating,
+      int reviewCount,
+      int purchaseCount,
+      String? setupTime,
+      WorkflowStatus status,
+      String? sellerId,
+      String? sellerName,
+      String? sellerAvatarUrl,
+      bool isFeatured,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -299,9 +292,8 @@ class __$$WorkflowImplCopyWithImpl<$Res>
     extends _$WorkflowCopyWithImpl<$Res, _$WorkflowImpl>
     implements _$$WorkflowImplCopyWith<$Res> {
   __$$WorkflowImplCopyWithImpl(
-    _$WorkflowImpl _value,
-    $Res Function(_$WorkflowImpl) _then,
-  ) : super(_value, _then);
+      _$WorkflowImpl _value, $Res Function(_$WorkflowImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Workflow
   /// with the given fields replaced by the non-null parameter values.
@@ -336,156 +328,154 @@ class __$$WorkflowImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$WorkflowImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        title: null == title
-            ? _value.title
-            : title // ignore: cast_nullable_to_non_nullable
-                  as String,
-        slug: null == slug
-            ? _value.slug
-            : slug // ignore: cast_nullable_to_non_nullable
-                  as String,
-        shortDescription: null == shortDescription
-            ? _value.shortDescription
-            : shortDescription // ignore: cast_nullable_to_non_nullable
-                  as String,
-        fullDescription: freezed == fullDescription
-            ? _value.fullDescription
-            : fullDescription // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        platform: null == platform
-            ? _value.platform
-            : platform // ignore: cast_nullable_to_non_nullable
-                  as WorkflowPlatform,
-        category: null == category
-            ? _value.category
-            : category // ignore: cast_nullable_to_non_nullable
-                  as WorkflowCategory,
-        difficulty: null == difficulty
-            ? _value.difficulty
-            : difficulty // ignore: cast_nullable_to_non_nullable
-                  as WorkflowDifficulty,
-        oneTimePrice: freezed == oneTimePrice
-            ? _value.oneTimePrice
-            : oneTimePrice // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        monthlyPrice: freezed == monthlyPrice
-            ? _value.monthlyPrice
-            : monthlyPrice // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        previewImages: null == previewImages
-            ? _value._previewImages
-            : previewImages // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        requiredIntegrations: null == requiredIntegrations
-            ? _value._requiredIntegrations
-            : requiredIntegrations // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        tags: null == tags
-            ? _value._tags
-            : tags // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        steps: null == steps
-            ? _value._steps
-            : steps // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        demoVideoUrl: freezed == demoVideoUrl
-            ? _value.demoVideoUrl
-            : demoVideoUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        workflowFileUrl: freezed == workflowFileUrl
-            ? _value.workflowFileUrl
-            : workflowFileUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        avgRating: null == avgRating
-            ? _value.avgRating
-            : avgRating // ignore: cast_nullable_to_non_nullable
-                  as double,
-        reviewCount: null == reviewCount
-            ? _value.reviewCount
-            : reviewCount // ignore: cast_nullable_to_non_nullable
-                  as int,
-        purchaseCount: null == purchaseCount
-            ? _value.purchaseCount
-            : purchaseCount // ignore: cast_nullable_to_non_nullable
-                  as int,
-        setupTime: freezed == setupTime
-            ? _value.setupTime
-            : setupTime // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as WorkflowStatus,
-        sellerId: freezed == sellerId
-            ? _value.sellerId
-            : sellerId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sellerName: freezed == sellerName
-            ? _value.sellerName
-            : sellerName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sellerAvatarUrl: freezed == sellerAvatarUrl
-            ? _value.sellerAvatarUrl
-            : sellerAvatarUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        isFeatured: null == isFeatured
-            ? _value.isFeatured
-            : isFeatured // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        createdAt: freezed == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$WorkflowImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      slug: null == slug
+          ? _value.slug
+          : slug // ignore: cast_nullable_to_non_nullable
+              as String,
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullDescription: freezed == fullDescription
+          ? _value.fullDescription
+          : fullDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+      platform: null == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as WorkflowPlatform,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as WorkflowCategory,
+      difficulty: null == difficulty
+          ? _value.difficulty
+          : difficulty // ignore: cast_nullable_to_non_nullable
+              as WorkflowDifficulty,
+      oneTimePrice: freezed == oneTimePrice
+          ? _value.oneTimePrice
+          : oneTimePrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      monthlyPrice: freezed == monthlyPrice
+          ? _value.monthlyPrice
+          : monthlyPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      previewImages: null == previewImages
+          ? _value._previewImages
+          : previewImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      requiredIntegrations: null == requiredIntegrations
+          ? _value._requiredIntegrations
+          : requiredIntegrations // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      tags: null == tags
+          ? _value._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      steps: null == steps
+          ? _value._steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      demoVideoUrl: freezed == demoVideoUrl
+          ? _value.demoVideoUrl
+          : demoVideoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workflowFileUrl: freezed == workflowFileUrl
+          ? _value.workflowFileUrl
+          : workflowFileUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avgRating: null == avgRating
+          ? _value.avgRating
+          : avgRating // ignore: cast_nullable_to_non_nullable
+              as double,
+      reviewCount: null == reviewCount
+          ? _value.reviewCount
+          : reviewCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      purchaseCount: null == purchaseCount
+          ? _value.purchaseCount
+          : purchaseCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      setupTime: freezed == setupTime
+          ? _value.setupTime
+          : setupTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as WorkflowStatus,
+      sellerId: freezed == sellerId
+          ? _value.sellerId
+          : sellerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sellerName: freezed == sellerName
+          ? _value.sellerName
+          : sellerName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sellerAvatarUrl: freezed == sellerAvatarUrl
+          ? _value.sellerAvatarUrl
+          : sellerAvatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isFeatured: null == isFeatured
+          ? _value.isFeatured
+          : isFeatured // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$WorkflowImpl implements _Workflow {
-  const _$WorkflowImpl({
-    required this.id,
-    required this.title,
-    required this.slug,
-    required this.shortDescription,
-    this.fullDescription,
-    required this.platform,
-    required this.category,
-    this.difficulty = WorkflowDifficulty.beginner,
-    this.oneTimePrice,
-    this.monthlyPrice,
-    final List<String> previewImages = const [],
-    final List<String> requiredIntegrations = const [],
-    final List<String> tags = const [],
-    final List<String> steps = const [],
-    this.demoVideoUrl,
-    this.workflowFileUrl,
-    this.avgRating = 0,
-    this.reviewCount = 0,
-    this.purchaseCount = 0,
-    this.setupTime,
-    this.status = WorkflowStatus.approved,
-    this.sellerId,
-    this.sellerName,
-    this.sellerAvatarUrl,
-    this.isFeatured = false,
-    this.createdAt,
-    this.updatedAt,
-  }) : _previewImages = previewImages,
-       _requiredIntegrations = requiredIntegrations,
-       _tags = tags,
-       _steps = steps;
+  const _$WorkflowImpl(
+      {required this.id,
+      required this.title,
+      required this.slug,
+      required this.shortDescription,
+      this.fullDescription,
+      required this.platform,
+      required this.category,
+      this.difficulty = WorkflowDifficulty.beginner,
+      this.oneTimePrice,
+      this.monthlyPrice,
+      final List<String> previewImages = const [],
+      final List<String> requiredIntegrations = const [],
+      final List<String> tags = const [],
+      final List<String> steps = const [],
+      this.demoVideoUrl,
+      this.workflowFileUrl,
+      this.avgRating = 0,
+      this.reviewCount = 0,
+      this.purchaseCount = 0,
+      this.setupTime,
+      this.status = WorkflowStatus.approved,
+      this.sellerId,
+      this.sellerName,
+      this.sellerAvatarUrl,
+      this.isFeatured = false,
+      this.createdAt,
+      this.updatedAt})
+      : _previewImages = previewImages,
+        _requiredIntegrations = requiredIntegrations,
+        _tags = tags,
+        _steps = steps;
 
   factory _$WorkflowImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkflowImplFromJson(json);
@@ -607,14 +597,10 @@ class _$WorkflowImpl implements _Workflow {
                 other.oneTimePrice == oneTimePrice) &&
             (identical(other.monthlyPrice, monthlyPrice) ||
                 other.monthlyPrice == monthlyPrice) &&
-            const DeepCollectionEquality().equals(
-              other._previewImages,
-              _previewImages,
-            ) &&
-            const DeepCollectionEquality().equals(
-              other._requiredIntegrations,
-              _requiredIntegrations,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._previewImages, _previewImages) &&
+            const DeepCollectionEquality()
+                .equals(other._requiredIntegrations, _requiredIntegrations) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other._steps, _steps) &&
             (identical(other.demoVideoUrl, demoVideoUrl) ||
@@ -647,35 +633,35 @@ class _$WorkflowImpl implements _Workflow {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    id,
-    title,
-    slug,
-    shortDescription,
-    fullDescription,
-    platform,
-    category,
-    difficulty,
-    oneTimePrice,
-    monthlyPrice,
-    const DeepCollectionEquality().hash(_previewImages),
-    const DeepCollectionEquality().hash(_requiredIntegrations),
-    const DeepCollectionEquality().hash(_tags),
-    const DeepCollectionEquality().hash(_steps),
-    demoVideoUrl,
-    workflowFileUrl,
-    avgRating,
-    reviewCount,
-    purchaseCount,
-    setupTime,
-    status,
-    sellerId,
-    sellerName,
-    sellerAvatarUrl,
-    isFeatured,
-    createdAt,
-    updatedAt,
-  ]);
+        runtimeType,
+        id,
+        title,
+        slug,
+        shortDescription,
+        fullDescription,
+        platform,
+        category,
+        difficulty,
+        oneTimePrice,
+        monthlyPrice,
+        const DeepCollectionEquality().hash(_previewImages),
+        const DeepCollectionEquality().hash(_requiredIntegrations),
+        const DeepCollectionEquality().hash(_tags),
+        const DeepCollectionEquality().hash(_steps),
+        demoVideoUrl,
+        workflowFileUrl,
+        avgRating,
+        reviewCount,
+        purchaseCount,
+        setupTime,
+        status,
+        sellerId,
+        sellerName,
+        sellerAvatarUrl,
+        isFeatured,
+        createdAt,
+        updatedAt
+      ]);
 
   /// Create a copy of Workflow
   /// with the given fields replaced by the non-null parameter values.
@@ -687,40 +673,41 @@ class _$WorkflowImpl implements _Workflow {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WorkflowImplToJson(this);
+    return _$$WorkflowImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Workflow implements Workflow {
-  const factory _Workflow({
-    required final String id,
-    required final String title,
-    required final String slug,
-    required final String shortDescription,
-    final String? fullDescription,
-    required final WorkflowPlatform platform,
-    required final WorkflowCategory category,
-    final WorkflowDifficulty difficulty,
-    final double? oneTimePrice,
-    final double? monthlyPrice,
-    final List<String> previewImages,
-    final List<String> requiredIntegrations,
-    final List<String> tags,
-    final List<String> steps,
-    final String? demoVideoUrl,
-    final String? workflowFileUrl,
-    final double avgRating,
-    final int reviewCount,
-    final int purchaseCount,
-    final String? setupTime,
-    final WorkflowStatus status,
-    final String? sellerId,
-    final String? sellerName,
-    final String? sellerAvatarUrl,
-    final bool isFeatured,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
-  }) = _$WorkflowImpl;
+  const factory _Workflow(
+      {required final String id,
+      required final String title,
+      required final String slug,
+      required final String shortDescription,
+      final String? fullDescription,
+      required final WorkflowPlatform platform,
+      required final WorkflowCategory category,
+      final WorkflowDifficulty difficulty,
+      final double? oneTimePrice,
+      final double? monthlyPrice,
+      final List<String> previewImages,
+      final List<String> requiredIntegrations,
+      final List<String> tags,
+      final List<String> steps,
+      final String? demoVideoUrl,
+      final String? workflowFileUrl,
+      final double avgRating,
+      final int reviewCount,
+      final int purchaseCount,
+      final String? setupTime,
+      final WorkflowStatus status,
+      final String? sellerId,
+      final String? sellerName,
+      final String? sellerAvatarUrl,
+      final bool isFeatured,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$WorkflowImpl;
 
   factory _Workflow.fromJson(Map<String, dynamic> json) =
       _$WorkflowImpl.fromJson;
@@ -815,19 +802,17 @@ mixin _$WorkflowFilter {
 /// @nodoc
 abstract class $WorkflowFilterCopyWith<$Res> {
   factory $WorkflowFilterCopyWith(
-    WorkflowFilter value,
-    $Res Function(WorkflowFilter) then,
-  ) = _$WorkflowFilterCopyWithImpl<$Res, WorkflowFilter>;
+          WorkflowFilter value, $Res Function(WorkflowFilter) then) =
+      _$WorkflowFilterCopyWithImpl<$Res, WorkflowFilter>;
   @useResult
-  $Res call({
-    String? search,
-    WorkflowCategory? category,
-    WorkflowPlatform? platform,
-    double? minPrice,
-    double? maxPrice,
-    double? minRating,
-    String? sort,
-  });
+  $Res call(
+      {String? search,
+      WorkflowCategory? category,
+      WorkflowPlatform? platform,
+      double? minPrice,
+      double? maxPrice,
+      double? minRating,
+      String? sort});
 }
 
 /// @nodoc
@@ -853,60 +838,55 @@ class _$WorkflowFilterCopyWithImpl<$Res, $Val extends WorkflowFilter>
     Object? minRating = freezed,
     Object? sort = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            search: freezed == search
-                ? _value.search
-                : search // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            category: freezed == category
-                ? _value.category
-                : category // ignore: cast_nullable_to_non_nullable
-                      as WorkflowCategory?,
-            platform: freezed == platform
-                ? _value.platform
-                : platform // ignore: cast_nullable_to_non_nullable
-                      as WorkflowPlatform?,
-            minPrice: freezed == minPrice
-                ? _value.minPrice
-                : minPrice // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            maxPrice: freezed == maxPrice
-                ? _value.maxPrice
-                : maxPrice // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            minRating: freezed == minRating
-                ? _value.minRating
-                : minRating // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            sort: freezed == sort
-                ? _value.sort
-                : sort // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      search: freezed == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as WorkflowCategory?,
+      platform: freezed == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as WorkflowPlatform?,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$WorkflowFilterImplCopyWith<$Res>
     implements $WorkflowFilterCopyWith<$Res> {
-  factory _$$WorkflowFilterImplCopyWith(
-    _$WorkflowFilterImpl value,
-    $Res Function(_$WorkflowFilterImpl) then,
-  ) = __$$WorkflowFilterImplCopyWithImpl<$Res>;
+  factory _$$WorkflowFilterImplCopyWith(_$WorkflowFilterImpl value,
+          $Res Function(_$WorkflowFilterImpl) then) =
+      __$$WorkflowFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? search,
-    WorkflowCategory? category,
-    WorkflowPlatform? platform,
-    double? minPrice,
-    double? maxPrice,
-    double? minRating,
-    String? sort,
-  });
+  $Res call(
+      {String? search,
+      WorkflowCategory? category,
+      WorkflowPlatform? platform,
+      double? minPrice,
+      double? maxPrice,
+      double? minRating,
+      String? sort});
 }
 
 /// @nodoc
@@ -914,9 +894,8 @@ class __$$WorkflowFilterImplCopyWithImpl<$Res>
     extends _$WorkflowFilterCopyWithImpl<$Res, _$WorkflowFilterImpl>
     implements _$$WorkflowFilterImplCopyWith<$Res> {
   __$$WorkflowFilterImplCopyWithImpl(
-    _$WorkflowFilterImpl _value,
-    $Res Function(_$WorkflowFilterImpl) _then,
-  ) : super(_value, _then);
+      _$WorkflowFilterImpl _value, $Res Function(_$WorkflowFilterImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of WorkflowFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -931,53 +910,50 @@ class __$$WorkflowFilterImplCopyWithImpl<$Res>
     Object? minRating = freezed,
     Object? sort = freezed,
   }) {
-    return _then(
-      _$WorkflowFilterImpl(
-        search: freezed == search
-            ? _value.search
-            : search // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        category: freezed == category
-            ? _value.category
-            : category // ignore: cast_nullable_to_non_nullable
-                  as WorkflowCategory?,
-        platform: freezed == platform
-            ? _value.platform
-            : platform // ignore: cast_nullable_to_non_nullable
-                  as WorkflowPlatform?,
-        minPrice: freezed == minPrice
-            ? _value.minPrice
-            : minPrice // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        maxPrice: freezed == maxPrice
-            ? _value.maxPrice
-            : maxPrice // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        minRating: freezed == minRating
-            ? _value.minRating
-            : minRating // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        sort: freezed == sort
-            ? _value.sort
-            : sort // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+    return _then(_$WorkflowFilterImpl(
+      search: freezed == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as WorkflowCategory?,
+      platform: freezed == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as WorkflowPlatform?,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      minRating: freezed == minRating
+          ? _value.minRating
+          : minRating // ignore: cast_nullable_to_non_nullable
+              as double?,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$WorkflowFilterImpl implements _WorkflowFilter {
-  const _$WorkflowFilterImpl({
-    this.search,
-    this.category,
-    this.platform,
-    this.minPrice,
-    this.maxPrice,
-    this.minRating,
-    this.sort,
-  });
+  const _$WorkflowFilterImpl(
+      {this.search,
+      this.category,
+      this.platform,
+      this.minPrice,
+      this.maxPrice,
+      this.minRating,
+      this.sort});
 
   factory _$WorkflowFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkflowFilterImplFromJson(json);
@@ -1023,16 +999,8 @@ class _$WorkflowFilterImpl implements _WorkflowFilter {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    search,
-    category,
-    platform,
-    minPrice,
-    maxPrice,
-    minRating,
-    sort,
-  );
+  int get hashCode => Object.hash(runtimeType, search, category, platform,
+      minPrice, maxPrice, minRating, sort);
 
   /// Create a copy of WorkflowFilter
   /// with the given fields replaced by the non-null parameter values.
@@ -1041,26 +1009,25 @@ class _$WorkflowFilterImpl implements _WorkflowFilter {
   @pragma('vm:prefer-inline')
   _$$WorkflowFilterImplCopyWith<_$WorkflowFilterImpl> get copyWith =>
       __$$WorkflowFilterImplCopyWithImpl<_$WorkflowFilterImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WorkflowFilterImplToJson(this);
+    return _$$WorkflowFilterImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _WorkflowFilter implements WorkflowFilter {
-  const factory _WorkflowFilter({
-    final String? search,
-    final WorkflowCategory? category,
-    final WorkflowPlatform? platform,
-    final double? minPrice,
-    final double? maxPrice,
-    final double? minRating,
-    final String? sort,
-  }) = _$WorkflowFilterImpl;
+  const factory _WorkflowFilter(
+      {final String? search,
+      final WorkflowCategory? category,
+      final WorkflowPlatform? platform,
+      final double? minPrice,
+      final double? maxPrice,
+      final double? minRating,
+      final String? sort}) = _$WorkflowFilterImpl;
 
   factory _WorkflowFilter.fromJson(Map<String, dynamic> json) =
       _$WorkflowFilterImpl.fromJson;

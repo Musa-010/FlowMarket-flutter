@@ -8,6 +8,8 @@ import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/auth/screens/register_screen.dart';
 import '../../features/auth/screens/forgot_password_screen.dart';
+import '../../features/auth/screens/otp_verify_screen.dart';
+import '../../models/user/user_model.dart';
 import '../../features/marketplace/screens/marketplace_screen.dart';
 import '../../features/marketplace/screens/workflow_detail_screen.dart';
 import '../../features/marketplace/screens/search_screen.dart';
@@ -33,26 +35,53 @@ import '../../shared/widgets/main_shell.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
+// Holds current auth state so redirect can read it safely without ref
+class _RouterNotifier extends ChangeNotifier {
+  AsyncValue _authState = const AsyncValue.loading();
+  AsyncValue get authState => _authState;
+
+  _RouterNotifier(Ref ref) {
+    _authState = ref.read(authProvider);
+    ref.listen<AsyncValue>(authProvider, (_, next) {
+      _authState = next;
+      notifyListeners();
+    });
+  }
+}
+
+final _routerNotifierProvider =
+    ChangeNotifierProvider((ref) => _RouterNotifier(ref));
+
 final appRouterProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authProvider);
+  // ref.read — do NOT watch. GoRouter created once, refreshListenable handles redirects.
+  final notifier = ref.read(_routerNotifierProvider);
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/splash',
+    refreshListenable: notifier,
     redirect: (context, state) {
+      final authState = notifier.authState;
       final location = state.matchedLocation;
       final isSplash = location == '/splash';
 
-      // Auth still loading — stay on splash
-      if (authState.isLoading) return isSplash ? null : '/splash';
-
-      final isLoggedIn = authState.value != null;
       final isAuthRoute = location.startsWith('/login') ||
           location.startsWith('/register') ||
           location.startsWith('/onboarding') ||
-          location.startsWith('/forgot-password');
+          location.startsWith('/forgot-password') ||
+          location.startsWith('/verify-otp');
 
-      // Auth just finished — redirect from splash
+      // During loading: stay on splash/auth routes, redirect everything else to splash
+      if (authState.isLoading) {
+        if (isSplash || isAuthRoute) return null;
+        return '/splash';
+      }
+
+      // Login error — stay on current auth route, don't navigate away
+      if (authState.hasError) return isAuthRoute ? null : '/login';
+
+      final isLoggedIn = authState.value != null;
+
       if (isSplash) return isLoggedIn ? '/dashboard' : '/login';
 
       if (!isLoggedIn && !isAuthRoute) return '/login';
@@ -81,6 +110,19 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/forgot-password',
         builder: (_, __) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/verify-otp',
+        builder: (_, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          if (extra == null) return const Scaffold(backgroundColor: Color(0xFF101415));
+          return OtpVerifyScreen(
+            email: extra['email'] as String,
+            fullName: extra['fullName'] as String,
+            password: extra['password'] as String,
+            role: extra['role'] as UserRole,
+          );
+        },
       ),
 
       // --- Main shell with bottom navigation ---

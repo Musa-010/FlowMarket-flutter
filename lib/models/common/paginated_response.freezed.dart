@@ -12,13 +12,10 @@ part of 'paginated_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaginatedResponse<T> _$PaginatedResponseFromJson<T>(
-  Map<String, dynamic> json,
-  T Function(Object?) fromJsonT,
-) {
+    Map<String, dynamic> json, T Function(Object?) fromJsonT) {
   return _PaginatedResponse<T>.fromJson(json, fromJsonT);
 }
 
@@ -43,20 +40,16 @@ mixin _$PaginatedResponse<T> {
 
 /// @nodoc
 abstract class $PaginatedResponseCopyWith<T, $Res> {
-  factory $PaginatedResponseCopyWith(
-    PaginatedResponse<T> value,
-    $Res Function(PaginatedResponse<T>) then,
-  ) = _$PaginatedResponseCopyWithImpl<T, $Res, PaginatedResponse<T>>;
+  factory $PaginatedResponseCopyWith(PaginatedResponse<T> value,
+          $Res Function(PaginatedResponse<T>) then) =
+      _$PaginatedResponseCopyWithImpl<T, $Res, PaginatedResponse<T>>;
   @useResult
   $Res call({List<T> data, int total, int page, int limit, bool hasMore});
 }
 
 /// @nodoc
-class _$PaginatedResponseCopyWithImpl<
-  T,
-  $Res,
-  $Val extends PaginatedResponse<T>
->
+class _$PaginatedResponseCopyWithImpl<T, $Res,
+        $Val extends PaginatedResponse<T>>
     implements $PaginatedResponseCopyWith<T, $Res> {
   _$PaginatedResponseCopyWithImpl(this._value, this._then);
 
@@ -76,41 +69,37 @@ class _$PaginatedResponseCopyWithImpl<
     Object? limit = null,
     Object? hasMore = null,
   }) {
-    return _then(
-      _value.copyWith(
-            data: null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                      as List<T>,
-            total: null == total
-                ? _value.total
-                : total // ignore: cast_nullable_to_non_nullable
-                      as int,
-            page: null == page
-                ? _value.page
-                : page // ignore: cast_nullable_to_non_nullable
-                      as int,
-            limit: null == limit
-                ? _value.limit
-                : limit // ignore: cast_nullable_to_non_nullable
-                      as int,
-            hasMore: null == hasMore
-                ? _value.hasMore
-                : hasMore // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PaginatedResponseImplCopyWith<T, $Res>
     implements $PaginatedResponseCopyWith<T, $Res> {
-  factory _$$PaginatedResponseImplCopyWith(
-    _$PaginatedResponseImpl<T> value,
-    $Res Function(_$PaginatedResponseImpl<T>) then,
-  ) = __$$PaginatedResponseImplCopyWithImpl<T, $Res>;
+  factory _$$PaginatedResponseImplCopyWith(_$PaginatedResponseImpl<T> value,
+          $Res Function(_$PaginatedResponseImpl<T>) then) =
+      __$$PaginatedResponseImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({List<T> data, int total, int page, int limit, bool hasMore});
@@ -120,10 +109,9 @@ abstract class _$$PaginatedResponseImplCopyWith<T, $Res>
 class __$$PaginatedResponseImplCopyWithImpl<T, $Res>
     extends _$PaginatedResponseCopyWithImpl<T, $Res, _$PaginatedResponseImpl<T>>
     implements _$$PaginatedResponseImplCopyWith<T, $Res> {
-  __$$PaginatedResponseImplCopyWithImpl(
-    _$PaginatedResponseImpl<T> _value,
-    $Res Function(_$PaginatedResponseImpl<T>) _then,
-  ) : super(_value, _then);
+  __$$PaginatedResponseImplCopyWithImpl(_$PaginatedResponseImpl<T> _value,
+      $Res Function(_$PaginatedResponseImpl<T>) _then)
+      : super(_value, _then);
 
   /// Create a copy of PaginatedResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -136,48 +124,45 @@ class __$$PaginatedResponseImplCopyWithImpl<T, $Res>
     Object? limit = null,
     Object? hasMore = null,
   }) {
-    return _then(
-      _$PaginatedResponseImpl<T>(
-        data: null == data
-            ? _value._data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as List<T>,
-        total: null == total
-            ? _value.total
-            : total // ignore: cast_nullable_to_non_nullable
-                  as int,
-        page: null == page
-            ? _value.page
-            : page // ignore: cast_nullable_to_non_nullable
-                  as int,
-        limit: null == limit
-            ? _value.limit
-            : limit // ignore: cast_nullable_to_non_nullable
-                  as int,
-        hasMore: null == hasMore
-            ? _value.hasMore
-            : hasMore // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+    return _then(_$PaginatedResponseImpl<T>(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$PaginatedResponseImpl<T> implements _PaginatedResponse<T> {
-  const _$PaginatedResponseImpl({
-    required final List<T> data,
-    required this.total,
-    required this.page,
-    required this.limit,
-    required this.hasMore,
-  }) : _data = data;
+  const _$PaginatedResponseImpl(
+      {required final List<T> data,
+      required this.total,
+      required this.page,
+      required this.limit,
+      required this.hasMore})
+      : _data = data;
 
   factory _$PaginatedResponseImpl.fromJson(
-    Map<String, dynamic> json,
-    T Function(Object?) fromJsonT,
-  ) => _$$PaginatedResponseImplFromJson(json, fromJsonT);
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+      _$$PaginatedResponseImplFromJson(json, fromJsonT);
 
   final List<T> _data;
   @override
@@ -215,14 +200,8 @@ class _$PaginatedResponseImpl<T> implements _PaginatedResponse<T> {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_data),
-    total,
-    page,
-    limit,
-    hasMore,
-  );
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_data), total, page, limit, hasMore);
 
   /// Create a copy of PaginatedResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -230,11 +209,9 @@ class _$PaginatedResponseImpl<T> implements _PaginatedResponse<T> {
   @override
   @pragma('vm:prefer-inline')
   _$$PaginatedResponseImplCopyWith<T, _$PaginatedResponseImpl<T>>
-  get copyWith =>
-      __$$PaginatedResponseImplCopyWithImpl<T, _$PaginatedResponseImpl<T>>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$PaginatedResponseImplCopyWithImpl<T, _$PaginatedResponseImpl<T>>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
@@ -243,18 +220,16 @@ class _$PaginatedResponseImpl<T> implements _PaginatedResponse<T> {
 }
 
 abstract class _PaginatedResponse<T> implements PaginatedResponse<T> {
-  const factory _PaginatedResponse({
-    required final List<T> data,
-    required final int total,
-    required final int page,
-    required final int limit,
-    required final bool hasMore,
-  }) = _$PaginatedResponseImpl<T>;
+  const factory _PaginatedResponse(
+      {required final List<T> data,
+      required final int total,
+      required final int page,
+      required final int limit,
+      required final bool hasMore}) = _$PaginatedResponseImpl<T>;
 
   factory _PaginatedResponse.fromJson(
-    Map<String, dynamic> json,
-    T Function(Object?) fromJsonT,
-  ) = _$PaginatedResponseImpl<T>.fromJson;
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =
+      _$PaginatedResponseImpl<T>.fromJson;
 
   @override
   List<T> get data;
@@ -272,5 +247,5 @@ abstract class _PaginatedResponse<T> implements PaginatedResponse<T> {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaginatedResponseImplCopyWith<T, _$PaginatedResponseImpl<T>>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

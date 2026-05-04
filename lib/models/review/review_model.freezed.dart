@@ -12,8 +12,7 @@ part of 'review_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Review _$ReviewFromJson(Map<String, dynamic> json) {
   return _Review.fromJson(json);
@@ -44,16 +43,15 @@ abstract class $ReviewCopyWith<$Res> {
   factory $ReviewCopyWith(Review value, $Res Function(Review) then) =
       _$ReviewCopyWithImpl<$Res, Review>;
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    String workflowId,
-    int rating,
-    String? comment,
-    String? userName,
-    String? userAvatarUrl,
-    DateTime? createdAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      String workflowId,
+      int rating,
+      String? comment,
+      String? userName,
+      String? userAvatarUrl,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -80,64 +78,59 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
     Object? userAvatarUrl = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            workflowId: null == workflowId
-                ? _value.workflowId
-                : workflowId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            rating: null == rating
-                ? _value.rating
-                : rating // ignore: cast_nullable_to_non_nullable
-                      as int,
-            comment: freezed == comment
-                ? _value.comment
-                : comment // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            userName: freezed == userName
-                ? _value.userName
-                : userName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            userAvatarUrl: freezed == userAvatarUrl
-                ? _value.userAvatarUrl
-                : userAvatarUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      workflowId: null == workflowId
+          ? _value.workflowId
+          : workflowId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userAvatarUrl: freezed == userAvatarUrl
+          ? _value.userAvatarUrl
+          : userAvatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   factory _$$ReviewImplCopyWith(
-    _$ReviewImpl value,
-    $Res Function(_$ReviewImpl) then,
-  ) = __$$ReviewImplCopyWithImpl<$Res>;
+          _$ReviewImpl value, $Res Function(_$ReviewImpl) then) =
+      __$$ReviewImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    String workflowId,
-    int rating,
-    String? comment,
-    String? userName,
-    String? userAvatarUrl,
-    DateTime? createdAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      String workflowId,
+      int rating,
+      String? comment,
+      String? userName,
+      String? userAvatarUrl,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -145,9 +138,8 @@ class __$$ReviewImplCopyWithImpl<$Res>
     extends _$ReviewCopyWithImpl<$Res, _$ReviewImpl>
     implements _$$ReviewImplCopyWith<$Res> {
   __$$ReviewImplCopyWithImpl(
-    _$ReviewImpl _value,
-    $Res Function(_$ReviewImpl) _then,
-  ) : super(_value, _then);
+      _$ReviewImpl _value, $Res Function(_$ReviewImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Review
   /// with the given fields replaced by the non-null parameter values.
@@ -163,58 +155,55 @@ class __$$ReviewImplCopyWithImpl<$Res>
     Object? userAvatarUrl = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(
-      _$ReviewImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        workflowId: null == workflowId
-            ? _value.workflowId
-            : workflowId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        rating: null == rating
-            ? _value.rating
-            : rating // ignore: cast_nullable_to_non_nullable
-                  as int,
-        comment: freezed == comment
-            ? _value.comment
-            : comment // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        userName: freezed == userName
-            ? _value.userName
-            : userName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        userAvatarUrl: freezed == userAvatarUrl
-            ? _value.userAvatarUrl
-            : userAvatarUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        createdAt: freezed == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$ReviewImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      workflowId: null == workflowId
+          ? _value.workflowId
+          : workflowId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userAvatarUrl: freezed == userAvatarUrl
+          ? _value.userAvatarUrl
+          : userAvatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ReviewImpl implements _Review {
-  const _$ReviewImpl({
-    required this.id,
-    required this.userId,
-    required this.workflowId,
-    required this.rating,
-    this.comment,
-    this.userName,
-    this.userAvatarUrl,
-    this.createdAt,
-  });
+  const _$ReviewImpl(
+      {required this.id,
+      required this.userId,
+      required this.workflowId,
+      required this.rating,
+      this.comment,
+      this.userName,
+      this.userAvatarUrl,
+      this.createdAt});
 
   factory _$ReviewImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewImplFromJson(json);
@@ -262,17 +251,8 @@ class _$ReviewImpl implements _Review {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    workflowId,
-    rating,
-    comment,
-    userName,
-    userAvatarUrl,
-    createdAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, userId, workflowId, rating,
+      comment, userName, userAvatarUrl, createdAt);
 
   /// Create a copy of Review
   /// with the given fields replaced by the non-null parameter values.
@@ -284,21 +264,22 @@ class _$ReviewImpl implements _Review {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReviewImplToJson(this);
+    return _$$ReviewImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Review implements Review {
-  const factory _Review({
-    required final String id,
-    required final String userId,
-    required final String workflowId,
-    required final int rating,
-    final String? comment,
-    final String? userName,
-    final String? userAvatarUrl,
-    final DateTime? createdAt,
-  }) = _$ReviewImpl;
+  const factory _Review(
+      {required final String id,
+      required final String userId,
+      required final String workflowId,
+      required final int rating,
+      final String? comment,
+      final String? userName,
+      final String? userAvatarUrl,
+      final DateTime? createdAt}) = _$ReviewImpl;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$ReviewImpl.fromJson;
 
@@ -349,9 +330,8 @@ mixin _$CreateReviewDto {
 /// @nodoc
 abstract class $CreateReviewDtoCopyWith<$Res> {
   factory $CreateReviewDtoCopyWith(
-    CreateReviewDto value,
-    $Res Function(CreateReviewDto) then,
-  ) = _$CreateReviewDtoCopyWithImpl<$Res, CreateReviewDto>;
+          CreateReviewDto value, $Res Function(CreateReviewDto) then) =
+      _$CreateReviewDtoCopyWithImpl<$Res, CreateReviewDto>;
   @useResult
   $Res call({int rating, String? comment});
 }
@@ -370,30 +350,29 @@ class _$CreateReviewDtoCopyWithImpl<$Res, $Val extends CreateReviewDto>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? rating = null, Object? comment = freezed}) {
-    return _then(
-      _value.copyWith(
-            rating: null == rating
-                ? _value.rating
-                : rating // ignore: cast_nullable_to_non_nullable
-                      as int,
-            comment: freezed == comment
-                ? _value.comment
-                : comment // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? rating = null,
+    Object? comment = freezed,
+  }) {
+    return _then(_value.copyWith(
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$CreateReviewDtoImplCopyWith<$Res>
     implements $CreateReviewDtoCopyWith<$Res> {
-  factory _$$CreateReviewDtoImplCopyWith(
-    _$CreateReviewDtoImpl value,
-    $Res Function(_$CreateReviewDtoImpl) then,
-  ) = __$$CreateReviewDtoImplCopyWithImpl<$Res>;
+  factory _$$CreateReviewDtoImplCopyWith(_$CreateReviewDtoImpl value,
+          $Res Function(_$CreateReviewDtoImpl) then) =
+      __$$CreateReviewDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int rating, String? comment});
@@ -404,27 +383,27 @@ class __$$CreateReviewDtoImplCopyWithImpl<$Res>
     extends _$CreateReviewDtoCopyWithImpl<$Res, _$CreateReviewDtoImpl>
     implements _$$CreateReviewDtoImplCopyWith<$Res> {
   __$$CreateReviewDtoImplCopyWithImpl(
-    _$CreateReviewDtoImpl _value,
-    $Res Function(_$CreateReviewDtoImpl) _then,
-  ) : super(_value, _then);
+      _$CreateReviewDtoImpl _value, $Res Function(_$CreateReviewDtoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CreateReviewDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? rating = null, Object? comment = freezed}) {
-    return _then(
-      _$CreateReviewDtoImpl(
-        rating: null == rating
-            ? _value.rating
-            : rating // ignore: cast_nullable_to_non_nullable
-                  as int,
-        comment: freezed == comment
-            ? _value.comment
-            : comment // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+  $Res call({
+    Object? rating = null,
+    Object? comment = freezed,
+  }) {
+    return _then(_$CreateReviewDtoImpl(
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -466,21 +445,20 @@ class _$CreateReviewDtoImpl implements _CreateReviewDto {
   @pragma('vm:prefer-inline')
   _$$CreateReviewDtoImplCopyWith<_$CreateReviewDtoImpl> get copyWith =>
       __$$CreateReviewDtoImplCopyWithImpl<_$CreateReviewDtoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CreateReviewDtoImplToJson(this);
+    return _$$CreateReviewDtoImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _CreateReviewDto implements CreateReviewDto {
-  const factory _CreateReviewDto({
-    required final int rating,
-    final String? comment,
-  }) = _$CreateReviewDtoImpl;
+  const factory _CreateReviewDto(
+      {required final int rating,
+      final String? comment}) = _$CreateReviewDtoImpl;
 
   factory _CreateReviewDto.fromJson(Map<String, dynamic> json) =
       _$CreateReviewDtoImpl.fromJson;

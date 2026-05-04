@@ -10,7 +10,7 @@ final themeModeProvider =
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   final Ref _ref;
 
-  ThemeModeNotifier(this._ref) : super(ThemeMode.system) {
+  ThemeModeNotifier(this._ref) : super(ThemeMode.dark) {
     _loadTheme();
   }
 

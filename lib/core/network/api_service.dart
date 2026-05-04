@@ -23,6 +23,12 @@ abstract class ApiService {
   @POST(ApiConstants.forgotPassword)
   Future<void> forgotPassword(@Body() Map<String, dynamic> body);
 
+  @POST(ApiConstants.verifyResetOtp)
+  Future<dynamic> verifyResetOtp(@Body() Map<String, dynamic> body);
+
+  @POST(ApiConstants.resetPassword)
+  Future<void> resetPassword(@Body() Map<String, dynamic> body);
+
   // Workflows
   @GET(ApiConstants.workflows)
   Future<dynamic> getWorkflows(@Queries() Map<String, dynamic> query);

@@ -12,8 +12,7 @@ part of 'user_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 User _$UserFromJson(Map<String, dynamic> json) {
   return _User.fromJson(json);
@@ -46,18 +45,17 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({
-    String id,
-    String email,
-    @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
-    String fullName,
-    String? avatarUrl,
-    UserRole role,
-    String? stripeCustomerId,
-    String? stripeConnectId,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String email,
+      @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
+      String fullName,
+      String? avatarUrl,
+      UserRole role,
+      String? stripeCustomerId,
+      String? stripeConnectId,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -85,70 +83,65 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            email: null == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                      as String,
-            fullName: null == fullName
-                ? _value.fullName
-                : fullName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            avatarUrl: freezed == avatarUrl
-                ? _value.avatarUrl
-                : avatarUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            role: null == role
-                ? _value.role
-                : role // ignore: cast_nullable_to_non_nullable
-                      as UserRole,
-            stripeCustomerId: freezed == stripeCustomerId
-                ? _value.stripeCustomerId
-                : stripeCustomerId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            stripeConnectId: freezed == stripeConnectId
-                ? _value.stripeConnectId
-                : stripeConnectId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as UserRole,
+      stripeCustomerId: freezed == stripeCustomerId
+          ? _value.stripeCustomerId
+          : stripeCustomerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stripeConnectId: freezed == stripeConnectId
+          ? _value.stripeConnectId
+          : stripeConnectId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$UserImplCopyWith(
-    _$UserImpl value,
-    $Res Function(_$UserImpl) then,
-  ) = __$$UserImplCopyWithImpl<$Res>;
+          _$UserImpl value, $Res Function(_$UserImpl) then) =
+      __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String email,
-    @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
-    String fullName,
-    String? avatarUrl,
-    UserRole role,
-    String? stripeCustomerId,
-    String? stripeConnectId,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String email,
+      @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
+      String fullName,
+      String? avatarUrl,
+      UserRole role,
+      String? stripeCustomerId,
+      String? stripeConnectId,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -156,7 +149,7 @@ class __$$UserImplCopyWithImpl<$Res>
     extends _$UserCopyWithImpl<$Res, _$UserImpl>
     implements _$$UserImplCopyWith<$Res> {
   __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -173,64 +166,61 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$UserImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        email: null == email
-            ? _value.email
-            : email // ignore: cast_nullable_to_non_nullable
-                  as String,
-        fullName: null == fullName
-            ? _value.fullName
-            : fullName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        avatarUrl: freezed == avatarUrl
-            ? _value.avatarUrl
-            : avatarUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        role: null == role
-            ? _value.role
-            : role // ignore: cast_nullable_to_non_nullable
-                  as UserRole,
-        stripeCustomerId: freezed == stripeCustomerId
-            ? _value.stripeCustomerId
-            : stripeCustomerId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        stripeConnectId: freezed == stripeConnectId
-            ? _value.stripeConnectId
-            : stripeConnectId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        createdAt: freezed == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$UserImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as UserRole,
+      stripeCustomerId: freezed == stripeCustomerId
+          ? _value.stripeCustomerId
+          : stripeCustomerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stripeConnectId: freezed == stripeConnectId
+          ? _value.stripeConnectId
+          : stripeConnectId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl implements _User {
-  const _$UserImpl({
-    required this.id,
-    required this.email,
-    @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
-    required this.fullName,
-    this.avatarUrl,
-    this.role = UserRole.buyer,
-    this.stripeCustomerId,
-    this.stripeConnectId,
-    this.createdAt,
-    this.updatedAt,
-  });
+  const _$UserImpl(
+      {required this.id,
+      required this.email,
+      @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
+      required this.fullName,
+      this.avatarUrl,
+      this.role = UserRole.buyer,
+      this.stripeCustomerId,
+      this.stripeConnectId,
+      this.createdAt,
+      this.updatedAt});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -285,18 +275,8 @@ class _$UserImpl implements _User {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    email,
-    fullName,
-    avatarUrl,
-    role,
-    stripeCustomerId,
-    stripeConnectId,
-    createdAt,
-    updatedAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, email, fullName, avatarUrl,
+      role, stripeCustomerId, stripeConnectId, createdAt, updatedAt);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -308,23 +288,24 @@ class _$UserImpl implements _User {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserImplToJson(this);
+    return _$$UserImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _User implements User {
-  const factory _User({
-    required final String id,
-    required final String email,
-    @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
-    required final String fullName,
-    final String? avatarUrl,
-    final UserRole role,
-    final String? stripeCustomerId,
-    final String? stripeConnectId,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
-  }) = _$UserImpl;
+  const factory _User(
+      {required final String id,
+      required final String email,
+      @JsonKey(readValue: _readFullName, fromJson: _fullNameFromJson)
+      required final String fullName,
+      final String? avatarUrl,
+      final UserRole role,
+      final String? stripeCustomerId,
+      final String? stripeConnectId,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -379,9 +360,8 @@ mixin _$AuthResponse {
 /// @nodoc
 abstract class $AuthResponseCopyWith<$Res> {
   factory $AuthResponseCopyWith(
-    AuthResponse value,
-    $Res Function(AuthResponse) then,
-  ) = _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
+          AuthResponse value, $Res Function(AuthResponse) then) =
+      _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
   @useResult
   $Res call({String accessToken, String refreshToken, User user});
 
@@ -407,23 +387,20 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
     Object? refreshToken = null,
     Object? user = null,
   }) {
-    return _then(
-      _value.copyWith(
-            accessToken: null == accessToken
-                ? _value.accessToken
-                : accessToken // ignore: cast_nullable_to_non_nullable
-                      as String,
-            refreshToken: null == refreshToken
-                ? _value.refreshToken
-                : refreshToken // ignore: cast_nullable_to_non_nullable
-                      as String,
-            user: null == user
-                ? _value.user
-                : user // ignore: cast_nullable_to_non_nullable
-                      as User,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ) as $Val);
   }
 
   /// Create a copy of AuthResponse
@@ -441,9 +418,8 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
 abstract class _$$AuthResponseImplCopyWith<$Res>
     implements $AuthResponseCopyWith<$Res> {
   factory _$$AuthResponseImplCopyWith(
-    _$AuthResponseImpl value,
-    $Res Function(_$AuthResponseImpl) then,
-  ) = __$$AuthResponseImplCopyWithImpl<$Res>;
+          _$AuthResponseImpl value, $Res Function(_$AuthResponseImpl) then) =
+      __$$AuthResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String accessToken, String refreshToken, User user});
@@ -457,9 +433,8 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
     extends _$AuthResponseCopyWithImpl<$Res, _$AuthResponseImpl>
     implements _$$AuthResponseImplCopyWith<$Res> {
   __$$AuthResponseImplCopyWithImpl(
-    _$AuthResponseImpl _value,
-    $Res Function(_$AuthResponseImpl) _then,
-  ) : super(_value, _then);
+      _$AuthResponseImpl _value, $Res Function(_$AuthResponseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -470,33 +445,30 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
     Object? refreshToken = null,
     Object? user = null,
   }) {
-    return _then(
-      _$AuthResponseImpl(
-        accessToken: null == accessToken
-            ? _value.accessToken
-            : accessToken // ignore: cast_nullable_to_non_nullable
-                  as String,
-        refreshToken: null == refreshToken
-            ? _value.refreshToken
-            : refreshToken // ignore: cast_nullable_to_non_nullable
-                  as String,
-        user: null == user
-            ? _value.user
-            : user // ignore: cast_nullable_to_non_nullable
-                  as User,
-      ),
-    );
+    return _then(_$AuthResponseImpl(
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AuthResponseImpl implements _AuthResponse {
-  const _$AuthResponseImpl({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.user,
-  });
+  const _$AuthResponseImpl(
+      {required this.accessToken,
+      required this.refreshToken,
+      required this.user});
 
   factory _$AuthResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthResponseImplFromJson(json);
@@ -539,16 +511,17 @@ class _$AuthResponseImpl implements _AuthResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AuthResponseImplToJson(this);
+    return _$$AuthResponseImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _AuthResponse implements AuthResponse {
-  const factory _AuthResponse({
-    required final String accessToken,
-    required final String refreshToken,
-    required final User user,
-  }) = _$AuthResponseImpl;
+  const factory _AuthResponse(
+      {required final String accessToken,
+      required final String refreshToken,
+      required final User user}) = _$AuthResponseImpl;
 
   factory _AuthResponse.fromJson(Map<String, dynamic> json) =
       _$AuthResponseImpl.fromJson;
@@ -609,20 +582,20 @@ class _$LoginDtoCopyWithImpl<$Res, $Val extends LoginDto>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? email = null, Object? password = null}) {
-    return _then(
-      _value.copyWith(
-            email: null == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                      as String,
-            password: null == password
-                ? _value.password
-                : password // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -630,9 +603,8 @@ class _$LoginDtoCopyWithImpl<$Res, $Val extends LoginDto>
 abstract class _$$LoginDtoImplCopyWith<$Res>
     implements $LoginDtoCopyWith<$Res> {
   factory _$$LoginDtoImplCopyWith(
-    _$LoginDtoImpl value,
-    $Res Function(_$LoginDtoImpl) then,
-  ) = __$$LoginDtoImplCopyWithImpl<$Res>;
+          _$LoginDtoImpl value, $Res Function(_$LoginDtoImpl) then) =
+      __$$LoginDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String password});
@@ -643,27 +615,27 @@ class __$$LoginDtoImplCopyWithImpl<$Res>
     extends _$LoginDtoCopyWithImpl<$Res, _$LoginDtoImpl>
     implements _$$LoginDtoImplCopyWith<$Res> {
   __$$LoginDtoImplCopyWithImpl(
-    _$LoginDtoImpl _value,
-    $Res Function(_$LoginDtoImpl) _then,
-  ) : super(_value, _then);
+      _$LoginDtoImpl _value, $Res Function(_$LoginDtoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of LoginDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? email = null, Object? password = null}) {
-    return _then(
-      _$LoginDtoImpl(
-        email: null == email
-            ? _value.email
-            : email // ignore: cast_nullable_to_non_nullable
-                  as String,
-        password: null == password
-            ? _value.password
-            : password // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_$LoginDtoImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -709,15 +681,16 @@ class _$LoginDtoImpl implements _LoginDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoginDtoImplToJson(this);
+    return _$$LoginDtoImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _LoginDto implements LoginDto {
-  const factory _LoginDto({
-    required final String email,
-    required final String password,
-  }) = _$LoginDtoImpl;
+  const factory _LoginDto(
+      {required final String email,
+      required final String password}) = _$LoginDtoImpl;
 
   factory _LoginDto.fromJson(Map<String, dynamic> json) =
       _$LoginDtoImpl.fromJson;
@@ -759,9 +732,8 @@ mixin _$RegisterDto {
 /// @nodoc
 abstract class $RegisterDtoCopyWith<$Res> {
   factory $RegisterDtoCopyWith(
-    RegisterDto value,
-    $Res Function(RegisterDto) then,
-  ) = _$RegisterDtoCopyWithImpl<$Res, RegisterDto>;
+          RegisterDto value, $Res Function(RegisterDto) then) =
+      _$RegisterDtoCopyWithImpl<$Res, RegisterDto>;
   @useResult
   $Res call({String fullName, String email, String password, UserRole role});
 }
@@ -786,27 +758,24 @@ class _$RegisterDtoCopyWithImpl<$Res, $Val extends RegisterDto>
     Object? password = null,
     Object? role = null,
   }) {
-    return _then(
-      _value.copyWith(
-            fullName: null == fullName
-                ? _value.fullName
-                : fullName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            email: null == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                      as String,
-            password: null == password
-                ? _value.password
-                : password // ignore: cast_nullable_to_non_nullable
-                      as String,
-            role: null == role
-                ? _value.role
-                : role // ignore: cast_nullable_to_non_nullable
-                      as UserRole,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as UserRole,
+    ) as $Val);
   }
 }
 
@@ -814,9 +783,8 @@ class _$RegisterDtoCopyWithImpl<$Res, $Val extends RegisterDto>
 abstract class _$$RegisterDtoImplCopyWith<$Res>
     implements $RegisterDtoCopyWith<$Res> {
   factory _$$RegisterDtoImplCopyWith(
-    _$RegisterDtoImpl value,
-    $Res Function(_$RegisterDtoImpl) then,
-  ) = __$$RegisterDtoImplCopyWithImpl<$Res>;
+          _$RegisterDtoImpl value, $Res Function(_$RegisterDtoImpl) then) =
+      __$$RegisterDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String fullName, String email, String password, UserRole role});
@@ -827,9 +795,8 @@ class __$$RegisterDtoImplCopyWithImpl<$Res>
     extends _$RegisterDtoCopyWithImpl<$Res, _$RegisterDtoImpl>
     implements _$$RegisterDtoImplCopyWith<$Res> {
   __$$RegisterDtoImplCopyWithImpl(
-    _$RegisterDtoImpl _value,
-    $Res Function(_$RegisterDtoImpl) _then,
-  ) : super(_value, _then);
+      _$RegisterDtoImpl _value, $Res Function(_$RegisterDtoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of RegisterDto
   /// with the given fields replaced by the non-null parameter values.
@@ -841,38 +808,35 @@ class __$$RegisterDtoImplCopyWithImpl<$Res>
     Object? password = null,
     Object? role = null,
   }) {
-    return _then(
-      _$RegisterDtoImpl(
-        fullName: null == fullName
-            ? _value.fullName
-            : fullName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        email: null == email
-            ? _value.email
-            : email // ignore: cast_nullable_to_non_nullable
-                  as String,
-        password: null == password
-            ? _value.password
-            : password // ignore: cast_nullable_to_non_nullable
-                  as String,
-        role: null == role
-            ? _value.role
-            : role // ignore: cast_nullable_to_non_nullable
-                  as UserRole,
-      ),
-    );
+    return _then(_$RegisterDtoImpl(
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as UserRole,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$RegisterDtoImpl implements _RegisterDto {
-  const _$RegisterDtoImpl({
-    required this.fullName,
-    required this.email,
-    required this.password,
-    this.role = UserRole.buyer,
-  });
+  const _$RegisterDtoImpl(
+      {required this.fullName,
+      required this.email,
+      required this.password,
+      this.role = UserRole.buyer});
 
   factory _$RegisterDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegisterDtoImplFromJson(json);
@@ -919,17 +883,18 @@ class _$RegisterDtoImpl implements _RegisterDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RegisterDtoImplToJson(this);
+    return _$$RegisterDtoImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _RegisterDto implements RegisterDto {
-  const factory _RegisterDto({
-    required final String fullName,
-    required final String email,
-    required final String password,
-    final UserRole role,
-  }) = _$RegisterDtoImpl;
+  const factory _RegisterDto(
+      {required final String fullName,
+      required final String email,
+      required final String password,
+      final UserRole role}) = _$RegisterDtoImpl;
 
   factory _RegisterDto.fromJson(Map<String, dynamic> json) =
       _$RegisterDtoImpl.fromJson;

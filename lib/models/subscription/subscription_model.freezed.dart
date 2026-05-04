@@ -12,8 +12,7 @@ part of 'subscription_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
   return _Subscription.fromJson(json);
@@ -42,19 +41,17 @@ mixin _$Subscription {
 /// @nodoc
 abstract class $SubscriptionCopyWith<$Res> {
   factory $SubscriptionCopyWith(
-    Subscription value,
-    $Res Function(Subscription) then,
-  ) = _$SubscriptionCopyWithImpl<$Res, Subscription>;
+          Subscription value, $Res Function(Subscription) then) =
+      _$SubscriptionCopyWithImpl<$Res, Subscription>;
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    PlanTier plan,
-    SubscriptionStatus status,
-    String? stripeSubscriptionId,
-    DateTime? currentPeriodEnd,
-    DateTime? createdAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      PlanTier plan,
+      SubscriptionStatus status,
+      String? stripeSubscriptionId,
+      DateTime? currentPeriodEnd,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -80,39 +77,36 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? currentPeriodEnd = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            plan: null == plan
-                ? _value.plan
-                : plan // ignore: cast_nullable_to_non_nullable
-                      as PlanTier,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as SubscriptionStatus,
-            stripeSubscriptionId: freezed == stripeSubscriptionId
-                ? _value.stripeSubscriptionId
-                : stripeSubscriptionId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            currentPeriodEnd: freezed == currentPeriodEnd
-                ? _value.currentPeriodEnd
-                : currentPeriodEnd // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      plan: null == plan
+          ? _value.plan
+          : plan // ignore: cast_nullable_to_non_nullable
+              as PlanTier,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SubscriptionStatus,
+      stripeSubscriptionId: freezed == stripeSubscriptionId
+          ? _value.stripeSubscriptionId
+          : stripeSubscriptionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currentPeriodEnd: freezed == currentPeriodEnd
+          ? _value.currentPeriodEnd
+          : currentPeriodEnd // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
@@ -120,20 +114,18 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
 abstract class _$$SubscriptionImplCopyWith<$Res>
     implements $SubscriptionCopyWith<$Res> {
   factory _$$SubscriptionImplCopyWith(
-    _$SubscriptionImpl value,
-    $Res Function(_$SubscriptionImpl) then,
-  ) = __$$SubscriptionImplCopyWithImpl<$Res>;
+          _$SubscriptionImpl value, $Res Function(_$SubscriptionImpl) then) =
+      __$$SubscriptionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    PlanTier plan,
-    SubscriptionStatus status,
-    String? stripeSubscriptionId,
-    DateTime? currentPeriodEnd,
-    DateTime? createdAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      PlanTier plan,
+      SubscriptionStatus status,
+      String? stripeSubscriptionId,
+      DateTime? currentPeriodEnd,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -141,9 +133,8 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     extends _$SubscriptionCopyWithImpl<$Res, _$SubscriptionImpl>
     implements _$$SubscriptionImplCopyWith<$Res> {
   __$$SubscriptionImplCopyWithImpl(
-    _$SubscriptionImpl _value,
-    $Res Function(_$SubscriptionImpl) _then,
-  ) : super(_value, _then);
+      _$SubscriptionImpl _value, $Res Function(_$SubscriptionImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Subscription
   /// with the given fields replaced by the non-null parameter values.
@@ -158,53 +149,50 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? currentPeriodEnd = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(
-      _$SubscriptionImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        plan: null == plan
-            ? _value.plan
-            : plan // ignore: cast_nullable_to_non_nullable
-                  as PlanTier,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as SubscriptionStatus,
-        stripeSubscriptionId: freezed == stripeSubscriptionId
-            ? _value.stripeSubscriptionId
-            : stripeSubscriptionId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        currentPeriodEnd: freezed == currentPeriodEnd
-            ? _value.currentPeriodEnd
-            : currentPeriodEnd // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        createdAt: freezed == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$SubscriptionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      plan: null == plan
+          ? _value.plan
+          : plan // ignore: cast_nullable_to_non_nullable
+              as PlanTier,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SubscriptionStatus,
+      stripeSubscriptionId: freezed == stripeSubscriptionId
+          ? _value.stripeSubscriptionId
+          : stripeSubscriptionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currentPeriodEnd: freezed == currentPeriodEnd
+          ? _value.currentPeriodEnd
+          : currentPeriodEnd // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SubscriptionImpl implements _Subscription {
-  const _$SubscriptionImpl({
-    required this.id,
-    required this.userId,
-    required this.plan,
-    required this.status,
-    this.stripeSubscriptionId,
-    this.currentPeriodEnd,
-    this.createdAt,
-  });
+  const _$SubscriptionImpl(
+      {required this.id,
+      required this.userId,
+      required this.plan,
+      required this.status,
+      this.stripeSubscriptionId,
+      this.currentPeriodEnd,
+      this.createdAt});
 
   factory _$SubscriptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubscriptionImplFromJson(json);
@@ -248,16 +236,8 @@ class _$SubscriptionImpl implements _Subscription {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    plan,
-    status,
-    stripeSubscriptionId,
-    currentPeriodEnd,
-    createdAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, userId, plan, status,
+      stripeSubscriptionId, currentPeriodEnd, createdAt);
 
   /// Create a copy of Subscription
   /// with the given fields replaced by the non-null parameter values.
@@ -269,20 +249,21 @@ class _$SubscriptionImpl implements _Subscription {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SubscriptionImplToJson(this);
+    return _$$SubscriptionImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Subscription implements Subscription {
-  const factory _Subscription({
-    required final String id,
-    required final String userId,
-    required final PlanTier plan,
-    required final SubscriptionStatus status,
-    final String? stripeSubscriptionId,
-    final DateTime? currentPeriodEnd,
-    final DateTime? createdAt,
-  }) = _$SubscriptionImpl;
+  const factory _Subscription(
+      {required final String id,
+      required final String userId,
+      required final PlanTier plan,
+      required final SubscriptionStatus status,
+      final String? stripeSubscriptionId,
+      final DateTime? currentPeriodEnd,
+      final DateTime? createdAt}) = _$SubscriptionImpl;
 
   factory _Subscription.fromJson(Map<String, dynamic> json) =
       _$SubscriptionImpl.fromJson;

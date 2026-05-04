@@ -3,53 +3,67 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  // Primary Brand
-  static const primary = Color(0xFF378ADD);
-  static const primaryDark = Color(0xFF185FA5);
-  static const primaryLight = Color(0xFFE6F1FB);
+  // Primary Brand — lavender/violet
+  static const primary = Color(0xFFCEBDFF);
+  static const primaryDark = Color(0xFF8B5CF6);
+  static const primaryLight = Color(0xFF3C1989);
 
-  // Accent
-  static const accent = Color(0xFF1D9E75);
-  static const accentLight = Color(0xFFE1F5EE);
+  // Container accent
+  static const primaryContainer = Color(0xFFA78BFA);
 
-  // Warning / Amber
-  static const warning = Color(0xFFEF9F27);
-  static const warningLight = Color(0xFFFAEEDA);
+  // Secondary — teal
+  static const accent = Color(0xFF4DDCC6);
+  static const accentLight = Color(0xFF1A4D47);
 
-  // Error / Red
-  static const error = Color(0xFFE24B4A);
-  static const errorLight = Color(0xFFFCEBEB);
+  // Gradient endpoints
+  static const gradientStart = Color(0xFF8B5CF6);
+  static const gradientEnd = Color(0xFFD946EF);
 
-  // Neutral Grays (Light Mode)
-  static const background = Color(0xFFFFFFFF);
-  static const surface = Color(0xFFF8F9FA);
-  static const surfaceVariant = Color(0xFFF1F3F5);
-  static const border = Color(0xFFE9ECEF);
-  static const borderDark = Color(0xFFDEE2E6);
+  // Pink / warning
+  static const warning = Color(0xFFFFAFD3);
+  static const warningLight = Color(0xFF4A1A2E);
 
-  static const textPrimary = Color(0xFF111827);
-  static const textSecondary = Color(0xFF6B7280);
-  static const textTertiary = Color(0xFF9CA3AF);
-  static const textDisabled = Color(0xFFD1D5DB);
+  // Error
+  static const error = Color(0xFFFFB4AB);
+  static const errorLight = Color(0xFF93000A);
 
-  // Dark Mode
-  static const backgroundDark = Color(0xFF0F1117);
-  static const surfaceDark = Color(0xFF1A1D27);
-  static const surfaceVariantDark = Color(0xFF252836);
-  static const borderDarkMode = Color(0xFF2D3142);
+  // Background / surface — always dark glass
+  static const background = Color(0xFF101415);
+  static const surface = Color(0xFF1A1D27);
+  static const surfaceVariant = Color(0xFF252836);
+  static const surfaceGlass = Color(0x0FFFFFFF); // ~6% white
 
-  static const textPrimaryDark = Color(0xFFF9FAFB);
-  static const textSecondaryDark = Color(0xFF9CA3AF);
-  static const textTertiaryDark = Color(0xFF6B7280);
+  // Borders
+  static const border = Color(0x14FFFFFF);       // ~8% white
+  static const borderDark = Color(0x1AFFFFFF);   // ~10% white
 
-  // Category Colors
-  static const categoryEmail = Color(0xFF378ADD);
-  static const categoryLead = Color(0xFF1D9E75);
-  static const categoryCRM = Color(0xFF7F77DD);
-  static const categorySocial = Color(0xFFD85A30);
-  static const categoryInvoice = Color(0xFFEF9F27);
-  static const categoryEcom = Color(0xFFD4537E);
-  static const categoryReport = Color(0xFF5DCAA5);
-  static const categoryNotif = Color(0xFF888780);
-  static const categoryCustom = Color(0xFF639922);
+  // Text
+  static const textPrimary = Color(0xFFFFFFFF);
+  static const textSecondary = Color(0xCCFFFFFF); // 80%
+  static const textTertiary = Color(0x80FFFFFF);  // 50%
+  static const textDisabled = Color(0x40FFFFFF);  // 25%
+
+  // Dark mode aliases (same values — app is always dark)
+  static const backgroundDark = background;
+  static const surfaceDark = surface;
+  static const surfaceVariantDark = surfaceVariant;
+  static const borderDarkMode = border;
+  static const textPrimaryDark = textPrimary;
+  static const textSecondaryDark = textSecondary;
+  static const textTertiaryDark = textTertiary;
+
+  // Category accent colors
+  static const categoryEmail = Color(0xFF4DDCC6);
+  static const categoryLead = Color(0xFF8B5CF6);
+  static const categoryCRM = Color(0xFFFFAFD3);
+  static const categorySocial = Color(0xFFD946EF);
+  static const categoryInvoice = Color(0xFFCEBDFF);
+  static const categoryEcom = Color(0xFF4DDCC6);
+  static const categoryReport = Color(0xFFA78BFA);
+  static const categoryNotif = Color(0xFFFFAFD3);
+  static const categoryCustom = Color(0xFF8B5CF6);
+
+  // Glow blobs
+  static const blobTopLeft = Color(0xFF3C1989);
+  static const blobBottomRight = Color(0xFF6A0045);
 }

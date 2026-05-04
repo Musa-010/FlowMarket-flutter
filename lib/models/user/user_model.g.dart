@@ -7,20 +7,21 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-  id: json['id'] as String,
-  email: json['email'] as String,
-  fullName: _fullNameFromJson(_readFullName(json, 'fullName')),
-  avatarUrl: json['avatarUrl'] as String?,
-  role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ?? UserRole.buyer,
-  stripeCustomerId: json['stripeCustomerId'] as String?,
-  stripeConnectId: json['stripeConnectId'] as String?,
-  createdAt: json['createdAt'] == null
-      ? null
-      : DateTime.parse(json['createdAt'] as String),
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
-);
+      id: json['id'] as String,
+      email: json['email'] as String,
+      fullName: _fullNameFromJson(_readFullName(json, 'fullName')),
+      avatarUrl: json['avatarUrl'] as String?,
+      role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ??
+          UserRole.buyer,
+      stripeCustomerId: json['stripeCustomerId'] as String?,
+      stripeConnectId: json['stripeConnectId'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+    );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
     <String, dynamic>{
@@ -62,16 +63,19 @@ _$LoginDtoImpl _$$LoginDtoImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$LoginDtoImplToJson(_$LoginDtoImpl instance) =>
-    <String, dynamic>{'email': instance.email, 'password': instance.password};
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
+    };
 
-_$RegisterDtoImpl _$$RegisterDtoImplFromJson(
-  Map<String, dynamic> json,
-) => _$RegisterDtoImpl(
-  fullName: json['fullName'] as String,
-  email: json['email'] as String,
-  password: json['password'] as String,
-  role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ?? UserRole.buyer,
-);
+_$RegisterDtoImpl _$$RegisterDtoImplFromJson(Map<String, dynamic> json) =>
+    _$RegisterDtoImpl(
+      fullName: json['fullName'] as String,
+      email: json['email'] as String,
+      password: json['password'] as String,
+      role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ??
+          UserRole.buyer,
+    );
 
 Map<String, dynamic> _$$RegisterDtoImplToJson(_$RegisterDtoImpl instance) =>
     <String, dynamic>{

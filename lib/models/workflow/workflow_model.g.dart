@@ -15,38 +15,32 @@ _$WorkflowImpl _$$WorkflowImplFromJson(Map<String, dynamic> json) =>
       fullDescription: json['fullDescription'] as String?,
       platform: $enumDecode(_$WorkflowPlatformEnumMap, json['platform']),
       category: $enumDecode(_$WorkflowCategoryEnumMap, json['category']),
-      difficulty:
-          $enumDecodeNullable(
-            _$WorkflowDifficultyEnumMap,
-            json['difficulty'],
-          ) ??
+      difficulty: $enumDecodeNullable(
+              _$WorkflowDifficultyEnumMap, json['difficulty']) ??
           WorkflowDifficulty.beginner,
       oneTimePrice: (json['oneTimePrice'] as num?)?.toDouble(),
       monthlyPrice: (json['monthlyPrice'] as num?)?.toDouble(),
-      previewImages:
-          (json['previewImages'] as List<dynamic>?)
+      previewImages: (json['previewImages'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      requiredIntegrations:
-          (json['requiredIntegrations'] as List<dynamic>?)
+      requiredIntegrations: (json['requiredIntegrations'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
       tags:
           (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-          const [],
+              const [],
       steps:
           (json['steps'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-          const [],
+              const [],
       demoVideoUrl: json['demoVideoUrl'] as String?,
       workflowFileUrl: json['workflowFileUrl'] as String?,
       avgRating: (json['avgRating'] as num?)?.toDouble() ?? 0,
       reviewCount: (json['reviewCount'] as num?)?.toInt() ?? 0,
       purchaseCount: (json['purchaseCount'] as num?)?.toInt() ?? 0,
       setupTime: json['setupTime'] as String?,
-      status:
-          $enumDecodeNullable(_$WorkflowStatusEnumMap, json['status']) ??
+      status: $enumDecodeNullable(_$WorkflowStatusEnumMap, json['status']) ??
           WorkflowStatus.approved,
       sellerId: json['sellerId'] as String?,
       sellerName: json['sellerName'] as String?,
@@ -122,26 +116,27 @@ const _$WorkflowStatusEnumMap = {
   WorkflowStatus.rejected: 'REJECTED',
 };
 
-_$WorkflowFilterImpl _$$WorkflowFilterImplFromJson(
-  Map<String, dynamic> json,
-) => _$WorkflowFilterImpl(
-  search: json['search'] as String?,
-  category: $enumDecodeNullable(_$WorkflowCategoryEnumMap, json['category']),
-  platform: $enumDecodeNullable(_$WorkflowPlatformEnumMap, json['platform']),
-  minPrice: (json['minPrice'] as num?)?.toDouble(),
-  maxPrice: (json['maxPrice'] as num?)?.toDouble(),
-  minRating: (json['minRating'] as num?)?.toDouble(),
-  sort: json['sort'] as String?,
-);
+_$WorkflowFilterImpl _$$WorkflowFilterImplFromJson(Map<String, dynamic> json) =>
+    _$WorkflowFilterImpl(
+      search: json['search'] as String?,
+      category:
+          $enumDecodeNullable(_$WorkflowCategoryEnumMap, json['category']),
+      platform:
+          $enumDecodeNullable(_$WorkflowPlatformEnumMap, json['platform']),
+      minPrice: (json['minPrice'] as num?)?.toDouble(),
+      maxPrice: (json['maxPrice'] as num?)?.toDouble(),
+      minRating: (json['minRating'] as num?)?.toDouble(),
+      sort: json['sort'] as String?,
+    );
 
 Map<String, dynamic> _$$WorkflowFilterImplToJson(
-  _$WorkflowFilterImpl instance,
-) => <String, dynamic>{
-  'search': instance.search,
-  'category': _$WorkflowCategoryEnumMap[instance.category],
-  'platform': _$WorkflowPlatformEnumMap[instance.platform],
-  'minPrice': instance.minPrice,
-  'maxPrice': instance.maxPrice,
-  'minRating': instance.minRating,
-  'sort': instance.sort,
-};
+        _$WorkflowFilterImpl instance) =>
+    <String, dynamic>{
+      'search': instance.search,
+      'category': _$WorkflowCategoryEnumMap[instance.category],
+      'platform': _$WorkflowPlatformEnumMap[instance.platform],
+      'minPrice': instance.minPrice,
+      'maxPrice': instance.maxPrice,
+      'minRating': instance.minRating,
+      'sort': instance.sort,
+    };

@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_radius.dart';
-import '../../../core/constants/app_typography.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../models/purchase/purchase_model.dart';
 import '../../../models/workflow/workflow_model.dart';
+import '../../../shared/widgets/glass_widgets.dart';
 import '../../marketplace/widgets/category_chip.dart';
 
 class PurchaseTile extends StatelessWidget {
@@ -29,34 +27,27 @@ class PurchaseTile extends StatelessWidget {
     final hasImage = workflow?.previewImages.isNotEmpty == true;
     final category = workflow?.category;
 
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.border),
-        borderRadius: AppRadius.md,
-      ),
+    return GlassCard(
+      borderRadius: BorderRadius.circular(20),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          // Main info row
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Thumbnail
               ClipRRect(
-                borderRadius: AppRadius.sm,
+                borderRadius: BorderRadius.circular(12),
                 child: hasImage
                     ? CachedNetworkImage(
                         imageUrl: workflow!.previewImages.first,
-                        width: 60,
-                        height: 60,
+                        width: 56,
+                        height: 56,
                         fit: BoxFit.cover,
-                        placeholder: (_, __) => Container(
-                          width: 60,
-                          height: 60,
-                          color: AppColors.surfaceVariant,
-                        ),
-                        errorWidget: (_, __, ___) => _buildPlaceholder(),
+                        placeholder: (_, __) => _Placeholder(),
+                        errorWidget: (_, __, ___) => _Placeholder(),
                       )
-                    : _buildPlaceholder(),
+                    : _Placeholder(),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -65,19 +56,26 @@ class PurchaseTile extends StatelessWidget {
                   children: [
                     Text(
                       workflow?.title ?? 'Workflow',
-                      style: AppTypography.labelLarge,
+                      style: const TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4),
                     if (category != null) ...[
-                      _buildCategoryPill(category),
+                      _CategoryPill(category: category),
                       const SizedBox(height: 4),
                     ],
                     Text(
                       'Purchased: ${Formatters.date(purchase.createdAt ?? DateTime.now())}',
-                      style: AppTypography.bodySmall.copyWith(
-                        color: AppColors.textSecondary,
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 11,
+                        color: const Color(0xFFCAC4D4).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -85,27 +83,27 @@ class PurchaseTile extends StatelessWidget {
                       children: [
                         Text(
                           '\$${purchase.pricePaid.toStringAsFixed(0)}',
-                          style: AppTypography.labelLarge.copyWith(
-                            color: AppColors.primary,
+                          style: const TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFFCEBDFF),
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.check_circle,
-                              size: 14,
-                              color: AppColors.accent,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              'Purchased',
-                              style: AppTypography.bodySmall.copyWith(
-                                color: AppColors.accent,
-                              ),
-                            ),
-                          ],
+                        const Icon(
+                          Icons.check_circle,
+                          size: 13,
+                          color: Color(0xFF4DDCC6),
+                        ),
+                        const SizedBox(width: 3),
+                        const Text(
+                          'Purchased',
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 11,
+                            color: Color(0xFF4DDCC6),
+                          ),
                         ),
                       ],
                     ),
@@ -114,23 +112,20 @@ class PurchaseTile extends StatelessWidget {
               ),
             ],
           ),
-
-          const SizedBox(height: 12),
-
-          // Action buttons row
+          const SizedBox(height: 14),
           Row(
             children: [
               Expanded(
-                child: _ActionButton(
+                child: _TileAction(
                   icon: Icons.rocket_launch_outlined,
                   label: 'Deploy',
-                  color: AppColors.primary,
+                  color: const Color(0xFF8B5CF6),
                   onTap: onDeploy,
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
-                child: _ActionButton(
+                child: _TileAction(
                   icon: Icons.download_outlined,
                   label: 'Download',
                   onTap: onDownload,
@@ -138,7 +133,7 @@ class PurchaseTile extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Expanded(
-                child: _ActionButton(
+                child: _TileAction(
                   icon: Icons.star_outline_rounded,
                   label: 'Review',
                   onTap: onReview,
@@ -150,66 +145,92 @@ class PurchaseTile extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildPlaceholder() {
+class _Placeholder extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      width: 60,
-      height: 60,
-      color: AppColors.surfaceVariant,
+      width: 56,
+      height: 56,
+      decoration: BoxDecoration(
+        color: const Color(0xFFA78BFA).withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: const Icon(
         Icons.auto_awesome_mosaic_outlined,
-        size: 24,
-        color: AppColors.textTertiary,
-      ),
-    );
-  }
-
-  Widget _buildCategoryPill(WorkflowCategory category) {
-    final color = CategoryChip.colorFor(category);
-    final label = CategoryChip.labelFor(category);
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.15),
-        borderRadius: AppRadius.full,
-      ),
-      child: Text(
-        label,
-        style: AppTypography.labelSmall.copyWith(color: color),
+        size: 22,
+        color: Color(0xFFCEBDFF),
       ),
     );
   }
 }
 
-class _ActionButton extends StatelessWidget {
-  const _ActionButton({
+class _CategoryPill extends StatelessWidget {
+  final WorkflowCategory category;
+  const _CategoryPill({required this.category});
+
+  @override
+  Widget build(BuildContext context) {
+    final color = CategoryChip.colorFor(category);
+    final label = CategoryChip.labelFor(category);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+          color: color,
+        ),
+      ),
+    );
+  }
+}
+
+class _TileAction extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color? color;
+  final VoidCallback? onTap;
+
+  const _TileAction({
     required this.icon,
     required this.label,
     this.color,
     this.onTap,
   });
 
-  final IconData icon;
-  final String label;
-  final Color? color;
-  final VoidCallback? onTap;
-
   @override
   Widget build(BuildContext context) {
-    final effectiveColor = color ?? AppColors.textSecondary;
-
-    return OutlinedButton.icon(
-      onPressed: onTap,
-      icon: Icon(icon, size: 16),
-      label: Text(label, style: AppTypography.labelSmall),
-      style: OutlinedButton.styleFrom(
-        foregroundColor: effectiveColor,
-        side: BorderSide(color: AppColors.border),
-        shape: RoundedRectangleBorder(borderRadius: AppRadius.sm),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-        minimumSize: Size.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    final c = color ?? const Color(0xFFCAC4D4);
+    return GestureDetector(
+      onTap: onTap,
+      child: GlassCard(
+        borderRadius: BorderRadius.circular(999),
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        opacity: 0.05,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 14, color: c),
+            const SizedBox(width: 4),
+            Text(
+              label,
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: c,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
